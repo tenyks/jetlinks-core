@@ -17,7 +17,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 
 /**
- * 消息协议支持接口，通过实现此接口来自定义消息协议
+ * 消息协议（数据协议非网络协议）支持接口，通过实现此接口来自定义消息协议
  *
  * @author zhouhao
  * @since 1.0.0

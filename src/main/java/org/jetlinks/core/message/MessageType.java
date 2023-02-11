@@ -31,9 +31,11 @@ public enum MessageType {
     //下行读写属性
     READ_PROPERTY(ReadPropertyMessage::new, DefaultReadPropertyMessage::new),
     WRITE_PROPERTY(WritePropertyMessage::new, DefaultWritePropertyMessage::new),
+
     //上行读写属性回复
     READ_PROPERTY_REPLY(ReadPropertyMessageReply::new, DefaultReadPropertyMessageReply::new),
     WRITE_PROPERTY_REPLY(WritePropertyMessageReply::new, DefaultWritePropertyMessageReply::new),
+
     //下行调用功能
     INVOKE_FUNCTION(FunctionInvokeMessage::new, DefaultFunctionInvokeMessage::new) {
         @Override
@@ -53,11 +55,13 @@ public enum MessageType {
     },
     //上行调用功能回复
     INVOKE_FUNCTION_REPLY(FunctionInvokeMessageReply::new, DefaultFunctionInvokeMessageReply::new),
+
     //事件消息
     EVENT(EventMessage::new, DefaultEventMessage::new),
 
     //广播,暂未支持
     BROADCAST(DefaultBroadcastMessage::new),
+
     //设备上线
     ONLINE(DeviceOnlineMessage::new),
     //设备离线
