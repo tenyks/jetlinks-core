@@ -74,8 +74,8 @@ public interface DeviceOperator extends Thing {
     Mono<Byte> getState();
 
     /**
-     * 检查设备的真实状态,此操作将检查设备真实的状态.
-     * 如果设备协议中指定了{@link ProtocolSupport#getStateChecker()},则将调用指定的状态检查器进行检查.
+     * 检查设备的真实状态, 此操作将检查设备真实的状态.
+     * 如果设备协议中指定了{@link ProtocolSupport#getStateChecker()}, 则将调用指定的状态检查器进行检查.
      * <br>
      * 默认的状态检查逻辑:
      * <br>

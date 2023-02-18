@@ -13,7 +13,7 @@ import static org.jetlinks.core.utils.SerializeUtils.readNullableUTF;
 import static org.jetlinks.core.utils.SerializeUtils.writeNullableUTF;
 
 /**
- * 上报固件更新进度
+ * 上报固件更新进度，方向: 设备->平台
  *
  * @author zhouhao
  * @since 1.3

@@ -170,26 +170,22 @@ public class DefaultDeviceOperator implements DeviceOperator, StorageConfigurabl
 
     @Override
     public Mono<String> getConnectionServerId() {
-        return getSelfConfig(connectionServerId.getKey())
-                .map(Value::asString);
+        return getSelfConfig(connectionServerId.getKey()).map(Value::asString);
     }
 
     @Override
     public Mono<String> getSessionId() {
-        return getSelfConfig(sessionId.getKey())
-                .map(Value::asString);
+        return getSelfConfig(sessionId.getKey()).map(Value::asString);
     }
 
     @Override
     public Mono<String> getAddress() {
-        return getConfig("address")
-                .map(Value::asString);
+        return getConfig("address").map(Value::asString);
     }
 
     @Override
     public Mono<Void> setAddress(String address) {
-        return setConfig("address", address)
-                .then();
+        return setConfig("address", address).then();
     }
 
     @Override
@@ -260,14 +256,10 @@ public class DefaultDeviceOperator implements DeviceOperator, StorageConfigurabl
                         .flatMap(values -> {
 
                             //当前设备连接到的服务器
-                            String server = values
-                                    .getValue(connectionServerId)
-                                    .orElse(null);
+                            String server = values.getValue(connectionServerId).orElse(null);
 
                             //设备缓存的状态
-                            Byte state = values
-                                    .getValue(stateKey)
-                                    .orElse(DeviceState.unknown);
+                            Byte state = values.getValue(stateKey).orElse(DeviceState.unknown);
 
                             Mono<Byte> checker = handler
                                     .getDeviceState(server, Collections.singletonList(id))
@@ -471,8 +463,7 @@ public class DefaultDeviceOperator implements DeviceOperator, StorageConfigurabl
 
     @Override
     public Mono<AuthenticationResponse> authenticate(AuthenticationRequest request) {
-        return getProtocol()
-                .flatMap(protocolSupport -> protocolSupport.authenticate(request, this));
+        return getProtocol().flatMap(protocolSupport -> protocolSupport.authenticate(request, this));
     }
 
     @Override

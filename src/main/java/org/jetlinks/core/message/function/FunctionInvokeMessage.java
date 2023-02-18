@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 物模型指令消息，方向: 平台->设备
  * @author zhouhao
  * @since 1.0.0
  */

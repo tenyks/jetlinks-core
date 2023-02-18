@@ -6,6 +6,8 @@ import org.jetlinks.core.message.CommonDeviceMessage;
 import org.jetlinks.core.message.MessageType;
 
 /**
+ * 设备事件消息
+ *
  * @author zhouhao
  * @since 1.0.0
  */
