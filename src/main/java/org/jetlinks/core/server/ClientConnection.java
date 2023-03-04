@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 import java.net.InetSocketAddress;
 
 /**
- * 客户端连接
+ * 连接的客户端侧
  *
  * @author zhouhao
  * @since 1.1.6

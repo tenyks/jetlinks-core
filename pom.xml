@@ -10,6 +10,8 @@
     <artifactId>jetlinks-core</artifactId>
     <name>JetLinks Core</name>
     <description>JetLinks 核心包</description>
+    <version>1.2.0</version>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
