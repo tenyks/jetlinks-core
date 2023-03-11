@@ -20,6 +20,9 @@ public enum DefaultTransport implements Transport {
     CoAP("CoAP"),
     @Deprecated
     CoAP_DTLS("CoAP DTLS"),
+    LwM2M("LwM2M"),
+    @Deprecated
+    LwM2M_DTLS("LwM2M DTLS"),
     TCP("TCP"),
     @Deprecated
     TCP_TLS("TCP TLS"),
