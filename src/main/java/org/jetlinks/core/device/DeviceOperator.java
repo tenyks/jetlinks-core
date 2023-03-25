@@ -150,8 +150,7 @@ public interface DeviceOperator extends Thing {
      * @see DeviceConfigKey
      */
     default <V> Mono<V> getSelfConfig(ConfigKey<V> key) {
-        return getSelfConfig(key.getKey())
-                .map(value -> value.as(key.getValueType()));
+        return getSelfConfig(key.getKey()).map(value -> value.as(key.getValueType()));
     }
 
     /**
@@ -169,9 +168,7 @@ public interface DeviceOperator extends Thing {
      * @return 是否在线
      */
     default Mono<Boolean> isOnline() {
-        return checkState()
-                .map(state -> state.equals(DeviceState.online))
-                .defaultIfEmpty(false);
+        return checkState().map(state -> state.equals(DeviceState.online)).defaultIfEmpty(false);
     }
 
     /**

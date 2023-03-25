@@ -13,6 +13,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
+ *
  * @author zhouhao
  * @since 1.0.0
  */
@@ -38,7 +39,7 @@ public class CoapExchangeMessage implements CoapMessage {
         exchange.advanced().sendResponse(response);
     }
 
-    public void response(CoAP.ResponseCode code,byte[] body) {
+    public void response(CoAP.ResponseCode code, byte[] body) {
         Response response = new Response(code);
         response.setBytes(body);
         exchange.advanced().sendResponse(response);

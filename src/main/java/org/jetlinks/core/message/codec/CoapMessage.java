@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * CoAP协议消息
+ *
  * @author zhouhao
  * @since 1.0
  */
