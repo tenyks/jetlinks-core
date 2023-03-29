@@ -11,6 +11,11 @@
     <name>JetLinks Core</name>
     <description>JetLinks 核心包</description>
 
+    <properties>
+        <californium.version>3.7.0</californium.version>
+        <leshan-server-cf.version>1.4.2</leshan-server-cf.version>
+    </properties>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
@@ -58,7 +63,21 @@
         <dependency>
             <groupId>org.eclipse.californium</groupId>
             <artifactId>californium-core</artifactId>
-            <version>3.6.0</version>
+            <version>${californium.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.californium</groupId>
+            <artifactId>scandium</artifactId>
+            <version>${californium.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.leshan</groupId>
+            <artifactId>leshan-server-cf</artifactId>
+            <version>${leshan-server-cf.version}</version>
             <optional>true</optional>
         </dependency>
 
