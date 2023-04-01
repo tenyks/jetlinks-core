@@ -30,7 +30,6 @@ public interface Route {
     }
 
     static HttpRoute.Builder http(String address) {
-        return HttpRoute.builder()
-                        .address(address);
+        return HttpRoute.builder().address(address);
     }
 }
