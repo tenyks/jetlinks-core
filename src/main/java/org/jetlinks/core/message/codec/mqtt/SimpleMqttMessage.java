@@ -1,4 +1,4 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.mqtt;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -6,6 +6,8 @@ import io.netty.handler.codec.mqtt.MqttProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetlinks.core.message.codec.MessagePayloadType;
+import org.jetlinks.core.message.codec.TextMessageParser;
 
 @Getter
 @Setter

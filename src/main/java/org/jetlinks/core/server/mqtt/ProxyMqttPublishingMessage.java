@@ -3,7 +3,7 @@ package org.jetlinks.core.server.mqtt;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.mqtt.MqttProperties;
 import lombok.AllArgsConstructor;
-import org.jetlinks.core.message.codec.MqttMessage;
+import org.jetlinks.core.message.codec.mqtt.MqttMessage;
 
 import javax.annotation.Nonnull;
 

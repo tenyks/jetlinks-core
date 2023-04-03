@@ -5,6 +5,7 @@ import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.OptionNumberRegistry;
+import org.jetlinks.core.message.codec.coap.DefaultCoapMessage;
 import org.junit.Test;
 
 import java.util.Objects;

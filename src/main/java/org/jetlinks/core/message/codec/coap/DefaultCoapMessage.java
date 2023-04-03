@@ -1,10 +1,11 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.coap;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import lombok.*;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.Option;
+import org.jetlinks.core.message.codec.TextMessageParser;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;

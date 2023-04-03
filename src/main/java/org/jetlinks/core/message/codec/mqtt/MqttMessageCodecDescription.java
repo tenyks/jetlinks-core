@@ -1,5 +1,6 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.mqtt;
 
+import org.jetlinks.core.message.codec.MessagePayloadType;
 import reactor.core.publisher.Flux;
 
 import java.util.List;

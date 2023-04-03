@@ -8,6 +8,7 @@ import org.jetlinks.core.metadata.Jsonable;
  * @since 1.0.0
  */
 public interface DeviceMessage extends ThingMessage, Jsonable {
+    //ISSUE 为什么继承ThingMessage?
 
     String getDeviceId();
 

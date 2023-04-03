@@ -1,8 +1,9 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.mqtt;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.handler.codec.mqtt.MqttProperties;
+import org.jetlinks.core.message.codec.EncodedMessage;
 import org.jetlinks.core.utils.StringBuilderUtils;
 
 import javax.annotation.Nonnull;

@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
+import org.jetlinks.core.message.codec.coap.CoapMessage;
+import org.jetlinks.core.message.codec.mqtt.MqttMessage;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

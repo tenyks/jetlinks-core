@@ -1,4 +1,4 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.coap;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
@@ -7,6 +7,7 @@ import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.Option;
 import org.eclipse.californium.core.coap.OptionNumberRegistry;
+import org.jetlinks.core.message.codec.EncodedMessage;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Nonnull;
