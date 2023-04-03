@@ -5,8 +5,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
-import org.jetlinks.core.message.codec.coap.CoapMessage;
-import org.jetlinks.core.message.codec.mqtt.MqttMessage;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -16,8 +14,8 @@ import java.nio.charset.StandardCharsets;
  * 已编码的消息,通常为来自设备或者发向设备的原始报文.
  *
  * @author zhouhao
- * @see MqttMessage
- * @see CoapMessage
+ * @see org.jetlinks.core.message.codec.coap.CoapMessage
+ * @see org.jetlinks.core.message.codec.mqtt.MqttMessage
  * @see org.jetlinks.core.message.codec.http.HttpExchangeMessage
  * @since 1.0.0
  */

@@ -1,12 +1,11 @@
 package org.jetlinks.core.message.codec;
 
-import org.jetlinks.core.message.codec.mqtt.MqttMessageCodecDescription;
 import org.jetlinks.core.metadata.ConfigMetadata;
 
 import javax.annotation.Nullable;
 
 /**
- * @see MqttMessageCodecDescription
+ * @see org.jetlinks.core.message.codec.mqtt.MqttMessageCodecDescription
  */
 public interface MessageCodecDescription {
 
