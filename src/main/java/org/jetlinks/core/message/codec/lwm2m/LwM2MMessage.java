@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2023/3/27
  * @since 1.2
  */
-public interface LwM2MRequestMessage extends EncodedMessage {
+public interface LwM2MMessage extends EncodedMessage {
 
     @Nonnull
     String getPath();

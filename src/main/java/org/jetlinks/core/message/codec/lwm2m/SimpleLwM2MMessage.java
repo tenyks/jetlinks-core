@@ -10,7 +10,7 @@ import java.util.List;
  * @author v-lizy8
  * @date 2023/3/27
  */
-public class SimpleLwM2MRequestMessage implements LwM2MRequestMessage {
+public class SimpleLwM2MMessage implements LwM2MMessage {
     @Nonnull
     @Override
     public ByteBuf getPayload() {

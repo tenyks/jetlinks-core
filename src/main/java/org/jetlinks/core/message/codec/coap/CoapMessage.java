@@ -27,6 +27,9 @@ public interface CoapMessage extends EncodedMessage {
     @Nonnull
     String getPath();
 
+    /**
+     * 请求的方法
+     */
     @Nonnull
     CoAP.Code getCode();
 
