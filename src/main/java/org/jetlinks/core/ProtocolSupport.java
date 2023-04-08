@@ -52,7 +52,7 @@ public interface ProtocolSupport extends Disposable, Ordered, Comparable<Protoco
      * 获取设备消息编码解码器
      * <ul>
      * <li>用于将平台统一的消息对象转码为设备的消息</li>
-     * <li>用于将设备发送的消息转吗为平台统一的消息对象</li>
+     * <li>用于将设备发送的消息转码为平台统一的消息对象</li>
      * </ul>
      *
      * @return 消息编解码器

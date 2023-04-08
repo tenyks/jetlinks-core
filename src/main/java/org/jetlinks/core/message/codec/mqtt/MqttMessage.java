@@ -1,8 +1,9 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.mqtt;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.handler.codec.mqtt.MqttProperties;
+import org.jetlinks.core.message.codec.EncodedMessage;
 import org.jetlinks.core.utils.StringBuilderUtils;
 
 import javax.annotation.Nonnull;
@@ -29,6 +30,10 @@ public interface MqttMessage extends EncodedMessage {
         return 0;
     }
 
+    /**
+     * 消息是否重复的标志，但MQTT协议明确说此标志不能作为判断消息重复的依据
+     * @return  如果消息可能重复返回true,否则返回false；
+     */
     default boolean isDup() {
         return false;
     }

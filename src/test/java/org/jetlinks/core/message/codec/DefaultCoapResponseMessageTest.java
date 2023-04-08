@@ -1,6 +1,7 @@
 package org.jetlinks.core.message.codec;
 
 import org.eclipse.californium.core.coap.CoAP;
+import org.jetlinks.core.message.codec.coap.DefaultCoapResponseMessage;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

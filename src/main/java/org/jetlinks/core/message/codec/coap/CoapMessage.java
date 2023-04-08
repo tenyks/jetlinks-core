@@ -1,9 +1,10 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.coap;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import org.apache.commons.codec.binary.Hex;
 import org.eclipse.californium.core.coap.*;
+import org.jetlinks.core.message.codec.EncodedMessage;
 
 import javax.annotation.Nonnull;
 import java.math.BigDecimal;
@@ -28,6 +29,9 @@ public interface CoapMessage extends EncodedMessage {
     @Nonnull
     String getPath();
 
+    /**
+     * 请求的方法
+     */
     @Nonnull
     CoAP.Code getCode();
 

@@ -1,6 +1,8 @@
 package org.jetlinks.core.message.codec;
 
 import org.jetlinks.core.message.Message;
+import org.jetlinks.core.message.codec.coap.CoapExchangeMessage;
+import org.jetlinks.core.message.codec.mqtt.MqttMessage;
 import org.reactivestreams.Publisher;
 
 import javax.annotation.Nonnull;

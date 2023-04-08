@@ -3,6 +3,7 @@ package org.jetlinks.core.route;
 /**
  * @see HttpRoute
  * @see MqttRoute
+ * @see LwM2MRoute
  */
 public interface Route {
     /**
@@ -30,7 +31,8 @@ public interface Route {
     }
 
     static HttpRoute.Builder http(String address) {
-        return HttpRoute.builder()
-                        .address(address);
+        return HttpRoute.builder().address(address);
     }
+
+    static LwM2MRoute.Builder lwm2m(String path) { return LwM2MRoute.builder(path); }
 }

@@ -1,4 +1,4 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.coap;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -7,8 +7,10 @@ import lombok.Setter;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.Option;
+import org.jetlinks.core.message.codec.TextMessageParser;
 
 import javax.annotation.Nonnull;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,6 @@ public class DefaultCoapResponseMessage implements CoapResponseMessage {
      * CoAP 5.02
      *
      * @param text
-     * @return
      */
     public static DefaultCoapResponseMessage of(String text) {
         DefaultCoapResponseMessage msg = new DefaultCoapResponseMessage();
@@ -58,6 +59,13 @@ public class DefaultCoapResponseMessage implements CoapResponseMessage {
         return msg;
     }
 
+    public static DefaultCoapResponseMessage of(CoAP.ResponseCode status, String payload) {
+        DefaultCoapResponseMessage msg = new DefaultCoapResponseMessage();
+        msg.setCode(status);
+        msg.setPayload(Unpooled.wrappedBuffer(payload == null ? new byte[0] : payload.getBytes(StandardCharsets.UTF_8)));
+        return msg;
+    }
+
     public static DefaultCoapResponseMessage of(CoapResponse response) {
         DefaultCoapResponseMessage msg = new DefaultCoapResponseMessage();
         msg.setCode(response.getCode());
@@ -65,4 +73,5 @@ public class DefaultCoapResponseMessage implements CoapResponseMessage {
         msg.setPayload(Unpooled.wrappedBuffer(response.getPayload() == null ? new byte[0] : response.getPayload()));
         return msg;
     }
+
 }

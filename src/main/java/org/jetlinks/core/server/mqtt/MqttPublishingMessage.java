@@ -1,6 +1,6 @@
 package org.jetlinks.core.server.mqtt;
 
-import org.jetlinks.core.message.codec.MqttMessage;
+import org.jetlinks.core.message.codec.mqtt.MqttMessage;
 
 /**
  * MQTT 推送消息

@@ -1,4 +1,4 @@
-package org.jetlinks.core.message.codec;
+package org.jetlinks.core.message.codec.coap;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

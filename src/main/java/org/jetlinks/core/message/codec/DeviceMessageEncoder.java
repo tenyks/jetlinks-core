@@ -1,5 +1,6 @@
 package org.jetlinks.core.message.codec;
 
+import org.jetlinks.core.message.codec.mqtt.MqttMessage;
 import org.jetlinks.core.utils.ParallelIntervalHelper;
 import org.reactivestreams.Publisher;
 

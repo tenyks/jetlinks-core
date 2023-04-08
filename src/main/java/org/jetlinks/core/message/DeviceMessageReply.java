@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
  * @since 1.0.0
  */
 public interface DeviceMessageReply extends DeviceMessage, ThingMessageReply {
+    //ISSUE 为什么继承ThingMessageReply？
 
     //是否成功
     boolean isSuccess();
