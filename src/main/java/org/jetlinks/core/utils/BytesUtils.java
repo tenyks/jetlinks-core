@@ -453,6 +453,41 @@ public class BytesUtils {
         return reverse(data, 0, data.length);
     }
 
+    public static boolean startsWith(byte[] data, byte[] prefix) {
+        if (prefix == null || prefix.length == 0) return true;
+        if (data == null || data.length == 0) return false;
+        if (prefix.length > data.length) return false;
+
+        if (prefix.length == 1) {
+            return (prefix[0] == data[0]);
+        }
+
+        for (int i = 0; i < prefix.length; i++) {
+            if (prefix[i] != data[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean endsWith(byte[] data, byte[] postfix) {
+        if (postfix == null || postfix.length == 0) return true;
+        if (data == null || data.length == 0) return false;
+        if (postfix.length > data.length) return false;
+
+        if (postfix.length == 1) {
+            return (postfix[0] == data[data.length - 1]);
+        }
+
+        for (int i = 0, j = data.length - postfix.length; i < postfix.length; i++, j++) {
+            if (postfix[i] != data[j]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     @Deprecated
     public static byte[] toLowBytes(int src) {
@@ -473,6 +508,4 @@ public class BytesUtils {
     public static byte[] toLowBytes(float src) {
         return toLowBytes(Float.floatToIntBits(src));
     }
-
-
 }
