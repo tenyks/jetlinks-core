@@ -16,6 +16,11 @@ import java.util.Map;
  */
 public interface LwM2MMessage extends EncodedMessage {
 
+    /**
+     * @return  消息关联的对象和资源
+     */
+    LwM2MObjectAndResource getObjectAndResource();
+
     int         getCode();
 
     @Nullable

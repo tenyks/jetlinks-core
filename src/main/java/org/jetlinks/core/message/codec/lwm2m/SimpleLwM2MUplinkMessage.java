@@ -13,6 +13,12 @@ import java.util.Map;
  * @date 2023/3/27
  */
 public class SimpleLwM2MUplinkMessage implements LwM2MUplinkMessage {
+
+    @Override
+    public LwM2MObjectAndResource getObjectAndResource() {
+        return null;
+    }
+
     @Nonnull
     @Override
     public ByteBuf getPayload() {
