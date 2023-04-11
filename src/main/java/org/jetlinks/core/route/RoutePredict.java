@@ -1,5 +1,6 @@
 package org.jetlinks.core.route;
 
+import com.alibaba.fastjson.JSONObject;
 import org.jetlinks.core.message.codec.EncodedMessage;
 
 /**
@@ -12,6 +13,6 @@ import org.jetlinks.core.message.codec.EncodedMessage;
  */
 public interface RoutePredict<R extends Route, M extends EncodedMessage> {
 
-    boolean isAcceptable(R route, M message);
+    boolean isAcceptable(R route, M message, JSONObject parsedMsg);
 
 }
