@@ -1,6 +1,6 @@
 package org.jetlinks.core.message.codec.lwm2m;
 
-public enum LwM2MObjectAndResource {
+public enum LwM2MResource {
 
     Register("设备注册"),
     RegisterUpdate("设备注册更新"),
@@ -11,7 +11,7 @@ public enum LwM2MObjectAndResource {
 
     private String  name;
 
-    LwM2MObjectAndResource(String name) {
+    LwM2MResource(String name) {
         this.name = name;
     }
 

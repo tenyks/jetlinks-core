@@ -15,7 +15,7 @@ import java.util.Map;
 public class SimpleLwM2MUplinkMessage implements LwM2MUplinkMessage {
 
     @Override
-    public LwM2MObjectAndResource getObjectAndResource() {
+    public LwM2MResource getObjectAndResource() {
         return null;
     }
 

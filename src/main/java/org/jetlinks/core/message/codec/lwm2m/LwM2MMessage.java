@@ -19,7 +19,7 @@ public interface LwM2MMessage extends EncodedMessage {
     /**
      * @return  消息关联的对象和资源
      */
-    LwM2MObjectAndResource getObjectAndResource();
+    LwM2MResource getObjectAndResource();
 
     int         getCode();
 
@@ -37,5 +37,6 @@ public interface LwM2MMessage extends EncodedMessage {
 
     @Nonnull
     List<Option> getOptions();
+
 
 }

@@ -1,6 +1,13 @@
 package org.jetlinks.core.route;
 
+import org.jetlinks.core.message.codec.lwm2m.LwM2MResource;
+
 public interface LwM2MRoute extends Route {
+
+    /**
+     * @return  LwM2M资源
+     */
+    LwM2MResource getResource();
 
     /**
      * @return  LwM2M协议的URI
@@ -34,6 +41,8 @@ public interface LwM2MRoute extends Route {
     interface Builder {
 
         LwM2MRoute.Builder group(String group);
+
+        LwM2MRoute.Builder resource(LwM2MResource resource);
 
         LwM2MRoute.Builder path(String path);
 

@@ -16,7 +16,7 @@ public class SimpleLwM2MDownlinkMessage implements LwM2MDownlinkMessage {
 
 
     @Override
-    public LwM2MObjectAndResource getObjectAndResource() {
+    public LwM2MResource getObjectAndResource() {
         return null;
     }
 

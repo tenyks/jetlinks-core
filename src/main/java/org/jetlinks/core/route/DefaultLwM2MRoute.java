@@ -1,10 +1,12 @@
 package org.jetlinks.core.route;
 
 import lombok.Getter;
+import org.jetlinks.core.message.codec.lwm2m.LwM2MResource;
 
 @Getter
 public class DefaultLwM2MRoute implements LwM2MRoute {
 
+    private final LwM2MResource resource;
     private final String path;
     private final String messageType;
     private final boolean upstream;
@@ -13,13 +15,15 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
     private final String description;
     private final String example;
 
-    DefaultLwM2MRoute(String path,
-                     String messageType,
-                     boolean upstream,
-                     boolean downstream,
-                     String group,
-                     String description,
-                     String example) {
+    DefaultLwM2MRoute(LwM2MResource resource,
+                      String path,
+                      String messageType,
+                      boolean upstream,
+                      boolean downstream,
+                      String group,
+                      String description,
+                      String example) {
+        this.resource = resource;
         this.path = path;
         this.messageType = messageType;
         this.upstream = upstream;
@@ -32,6 +36,7 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
     @Override
     public String toString() {
         return "DefaultLwM2MRoute{" +
+                "resource='" + resource + '\'' +
                 "path='" + path + '\'' +
                 ", messageType='" + messageType + '\'' +
                 ", upstream=" + upstream +
@@ -46,7 +51,10 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
         return new DefaultLwM2MRoute.DefaultLwM2MRouteBuilder();
     }
 
+
+
     static class DefaultLwM2MRouteBuilder implements LwM2MRoute.Builder {
+        private LwM2MResource resource;
         private String path;
         private String messageType;
         private boolean upstream;
@@ -60,6 +68,12 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
 
         public DefaultLwM2MRoute.DefaultLwM2MRouteBuilder path(String path) {
             this.path = path;
+            return this;
+        }
+
+        @Override
+        public Builder resource(LwM2MResource resource) {
+            this.resource = resource;
             return this;
         }
 
@@ -95,11 +109,11 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
         }
 
         public DefaultLwM2MRoute build() {
-            return new DefaultLwM2MRoute(path, messageType, upstream, downstream, group, description, example);
+            return new DefaultLwM2MRoute(resource, path, messageType, upstream, downstream, group, description, example);
         }
 
         public String toString() {
-            return "DefaultMqttRoute.DefaultMqttRouteBuilder(topic=" + this.path + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
+            return "DefaultMqttRoute.DefaultMqttRouteBuilder(resource=" + this.resource + ", path=" + this.path + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
         }
     }
 
