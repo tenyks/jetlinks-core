@@ -11,7 +11,7 @@ import org.jetlinks.core.message.codec.EncodedMessage;
  * @version 1.0
  * @since 1.2
  */
-public interface RoutePredict<R extends Route, M extends EncodedMessage> {
+public interface UpstreamRoutePredict<R extends Route, M extends EncodedMessage> {
 
     boolean isAcceptable(R route, M message, JSONObject parsedMsg);
 

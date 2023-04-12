@@ -14,16 +14,23 @@ import java.util.Map;
  */
 public class SimpleLwM2MDownlinkMessage implements LwM2MDownlinkMessage {
 
+    private LwM2MResource   resource;
+
+    private ByteBuf     payload;
+
+    private String      registrationId;
+
+    private int         messageId;
 
     @Override
     public LwM2MResource getObjectAndResource() {
-        return null;
+        return resource;
     }
 
     @Nonnull
     @Override
     public ByteBuf getPayload() {
-        return null;
+        return payload;
     }
 
     @Override
@@ -40,13 +47,13 @@ public class SimpleLwM2MDownlinkMessage implements LwM2MDownlinkMessage {
     @Nonnull
     @Override
     public String getRegistrationId() {
-        return null;
+        return registrationId;
     }
 
     @Nonnull
     @Override
     public int getMessageId() {
-        return 0;
+        return messageId;
     }
 
     @Nonnull
@@ -59,5 +66,31 @@ public class SimpleLwM2MDownlinkMessage implements LwM2MDownlinkMessage {
     @Override
     public List<Option> getOptions() {
         return null;
+    }
+
+    public void setResource(LwM2MResource resource) {
+        this.resource = resource;
+    }
+
+    public void setPayload(ByteBuf payload) {
+        this.payload = payload;
+    }
+
+    public void setRegistrationId(String registrationId) {
+        this.registrationId = registrationId;
+    }
+
+    public void setMessageId(int messageId) {
+        this.messageId = messageId;
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleLwM2MDownlinkMessage{" +
+                "resource=" + resource +
+                ", payload=" + payload +
+                ", registrationId='" + registrationId + '\'' +
+                ", messageId=" + messageId +
+                '}';
     }
 }

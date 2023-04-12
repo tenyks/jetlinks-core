@@ -1,5 +1,7 @@
 package org.jetlinks.core.route;
 
+import org.jetlinks.core.message.codec.lwm2m.LwM2MResource;
+
 /**
  * @see HttpRoute
  * @see MqttRoute
@@ -34,5 +36,5 @@ public interface Route {
         return HttpRoute.builder().address(address);
     }
 
-    static LwM2MRoute.Builder lwm2m(String path) { return LwM2MRoute.builder(path); }
+    static LwM2MRoute.Builder lwm2m(LwM2MResource resource) { return LwM2MRoute.builder(resource); }
 }

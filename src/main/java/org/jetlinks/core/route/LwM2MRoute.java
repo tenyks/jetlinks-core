@@ -34,8 +34,8 @@ public interface LwM2MRoute extends Route {
         return getPath();
     }
 
-    static LwM2MRoute.Builder builder(String path) {
-        return DefaultLwM2MRoute.builder().path(path);
+    static LwM2MRoute.Builder builder(LwM2MResource resource) {
+        return DefaultLwM2MRoute.builder().resource(resource);
     }
 
     interface Builder {
