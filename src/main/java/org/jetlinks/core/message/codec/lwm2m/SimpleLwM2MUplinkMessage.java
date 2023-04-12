@@ -41,7 +41,7 @@ public class SimpleLwM2MUplinkMessage implements LwM2MUplinkMessage {
     @Nullable
     @Override
     public String getPath() {
-        return null;
+        return (resource != null ? resource.getPath() : null);
     }
 
     @Nonnull
