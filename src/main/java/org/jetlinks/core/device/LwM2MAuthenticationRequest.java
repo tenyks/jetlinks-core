@@ -67,6 +67,10 @@ public abstract class LwM2MAuthenticationRequest implements AuthenticationReques
         this.useX509Cert = useX509Cert;
     }
 
+    public void complete(boolean accepted) {
+
+    }
+
     @Override
     public Transport getTransport() {
         return DefaultTransport.LwM2M;
