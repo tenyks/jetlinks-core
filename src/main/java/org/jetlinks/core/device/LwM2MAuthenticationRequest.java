@@ -31,6 +31,8 @@ public abstract class LwM2MAuthenticationRequest implements AuthenticationReques
      */
     private final boolean useX509Cert;
 
+    private String  clientAddress;
+
     public LwM2MAuthenticationRequest(String endpoint) {
         this(endpoint, false);
     }
@@ -71,6 +73,10 @@ public abstract class LwM2MAuthenticationRequest implements AuthenticationReques
 
     }
 
+    public Object getRegistration() {
+        return null;
+    }
+
     @Override
     public Transport getTransport() {
         return DefaultTransport.LwM2M;
@@ -94,6 +100,14 @@ public abstract class LwM2MAuthenticationRequest implements AuthenticationReques
 
     public boolean isUseX509Cert() {
         return useX509Cert;
+    }
+
+    public String getClientAddress() {
+        return clientAddress;
+    }
+
+    public void setClientAddress(String clientAddress) {
+        this.clientAddress = clientAddress;
     }
 
     @Override
