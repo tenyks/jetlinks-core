@@ -3,6 +3,7 @@ package org.jetlinks.core.device;
 import org.jetlinks.core.message.codec.DefaultTransport;
 import org.jetlinks.core.message.codec.Transport;
 
+import javax.annotation.Nonnull;
 import javax.validation.constraints.Null;
 import java.security.PublicKey;
 import java.util.Arrays;
@@ -70,8 +71,16 @@ public abstract class LwM2MAuthenticationRequest implements AuthenticationReques
         this.useX509Cert = useX509Cert;
     }
 
-    public void complete(boolean accepted, @Null String message) {
+    protected void complete(boolean accepted, @Null String message) {
 
+    }
+
+    public void accept() {
+        complete(true, "设备认证通过");
+    }
+
+    public void reject(@Nonnull String message) {
+        complete(false, message);
     }
 
     public Object getRegistration() {
