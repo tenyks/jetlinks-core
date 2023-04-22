@@ -115,6 +115,7 @@ public class DefaultDeviceOperator implements DeviceOperator, StorageConfigurabl
                     String _version = productIdAndVersion.getString(productVersion.getKey(), (String) null);
                     return registry.getProduct(_productId, _version);
                 });
+
         //支持设备自定义协议
         ProtocolSupport ps = this
                 .getSelfConfig(protocol)
