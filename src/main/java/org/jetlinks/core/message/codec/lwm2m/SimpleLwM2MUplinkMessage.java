@@ -24,6 +24,8 @@ public class SimpleLwM2MUplinkMessage implements LwM2MUplinkMessage {
 
     private int         code;
 
+    private String      deviceId;
+
     @Override
     public LwM2MResource getObjectAndResource() {
         return resource;
@@ -88,6 +90,15 @@ public class SimpleLwM2MUplinkMessage implements LwM2MUplinkMessage {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    @Override
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     @Override

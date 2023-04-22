@@ -38,5 +38,7 @@ public interface LwM2MMessage extends EncodedMessage {
     @Nonnull
     List<Option> getOptions();
 
+    String  getDeviceId();
+
 
 }

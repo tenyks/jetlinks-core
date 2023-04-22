@@ -22,6 +22,8 @@ public class SimpleLwM2MDownlinkMessage implements LwM2MDownlinkMessage {
 
     private int         messageId;
 
+    private String      deviceId;
+
     @Override
     public LwM2MResource getObjectAndResource() {
         return resource;
@@ -82,6 +84,15 @@ public class SimpleLwM2MDownlinkMessage implements LwM2MDownlinkMessage {
 
     public void setMessageId(int messageId) {
         this.messageId = messageId;
+    }
+
+    @Override
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     @Override

@@ -116,10 +116,11 @@ public class DefaultDeviceOperator implements DeviceOperator, StorageConfigurabl
                     return registry.getProduct(_productId, _version);
                 });
         //支持设备自定义协议
-        this.protocolSupportMono = this
+        ProtocolSupport ps = this
                 .getSelfConfig(protocol)
                 .flatMap(supports::getProtocol)
-                .switchIfEmpty(this.parent.flatMap(DeviceProductOperator::getProtocol));
+                .switchIfEmpty(this.parent.flatMap(DeviceProductOperator::getProtocol)).block();
+        this.protocolSupportMono = Mono.just(ps);
 
         this.stateChecker = deviceStateChecker;
         this.metadataMono = this
