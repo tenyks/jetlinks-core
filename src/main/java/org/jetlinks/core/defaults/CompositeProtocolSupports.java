@@ -2,6 +2,8 @@ package org.jetlinks.core.defaults;
 
 import org.jetlinks.core.ProtocolSupport;
 import org.jetlinks.core.ProtocolSupports;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -9,6 +11,8 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CompositeProtocolSupports implements ProtocolSupports {
+
+    private static final Logger log = LoggerFactory.getLogger(CompositeProtocolSupports.class);
 
     private final List<ProtocolSupports> supports = new CopyOnWriteArrayList<>();
 

@@ -64,10 +64,10 @@ public class DefaultDeviceProductOperator implements DeviceProductOperator, Stor
         this.storageMono = storageMono;
         this.devicesSupplier = supplier;
         this.inLocalMetadata = Mono.fromSupplier(() -> metadata);
-        ProtocolSupport ps = this
+
+        this.protocolSupportMono = this
                 .getConfig(DeviceConfigKey.protocol)
-                .flatMap(supports::getProtocol).block();
-        this.protocolSupportMono = Mono.just(ps);
+                .flatMap(supports::getProtocol);
 
         Mono<DeviceMetadata> loadMetadata = Mono
                 .zip(
