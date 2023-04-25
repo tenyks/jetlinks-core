@@ -4,10 +4,10 @@ public enum LwM2MResource {
 
     Register("/register", "设备注册", 0),
     RegisterUpdate("/register", "设备注册更新", 0),
-    UnRegister("/register", "设备注销", 0),
+    UnRegister("/deregister", "设备注销", 0),
     BinaryAppDataContainerReport("/19/0/0", "上报设备数据/上报设备事件", 1),
     BinaryAppDataContainerReportRoot("/19/0", "上报设备数据/上报设备事件", 1),
-    BinaryAppDataContainerCommand("/19/1/1", "指令下发", 2),
+    BinaryAppDataContainerCommand("/19/1/0", "指令下发", 2),
     ;
 
     private String  path;
