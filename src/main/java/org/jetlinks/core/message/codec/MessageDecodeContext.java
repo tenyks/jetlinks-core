@@ -19,7 +19,7 @@ public interface MessageDecodeContext extends MessageCodecContext {
      * @see EncodedMessage#getPayload()
      * @see org.jetlinks.core.message.codec.mqtt.MqttMessage
      * @see org.jetlinks.core.message.codec.http.HttpExchangeMessage
-     * @see org.jetlinks.core.message.codec.coap.CoapExchangeMessage
+     * @see org.jetlinks.core.message.codec.lwm2m.LwM2MMessage
      * @since 1.0.0
      */
     @Nonnull
