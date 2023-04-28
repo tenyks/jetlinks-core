@@ -1,31 +1,32 @@
 package org.jetlinks.core.route;
 
 import lombok.Getter;
-import org.jetlinks.core.message.codec.lwm2m.LwM2MResource;
+import org.jetlinks.core.message.codec.MessagePayloadType;
+import org.jetlinks.core.message.codec.lwm2m.LwM2MOperation;
 
 @Getter
 public class DefaultLwM2MRoute implements LwM2MRoute {
 
-    private final LwM2MResource resource;
-    private final String path;
-    private final String messageType;
+    private final LwM2MOperation    operation;
+    private final String    path;
+    private final MessagePayloadType payloadType;
     private final boolean upstream;
     private final boolean downstream;
     private final String group;
     private final String description;
     private final String example;
 
-    DefaultLwM2MRoute(LwM2MResource resource,
+    DefaultLwM2MRoute(LwM2MOperation operation,
                       String path,
-                      String messageType,
+                      MessagePayloadType payloadType,
                       boolean upstream,
                       boolean downstream,
                       String group,
                       String description,
                       String example) {
-        this.resource = resource;
+        this.operation = operation;
         this.path = path;
-        this.messageType = messageType;
+        this.payloadType = payloadType;
         this.upstream = upstream;
         this.downstream = downstream;
         this.group = group;
@@ -36,9 +37,9 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
     @Override
     public String toString() {
         return "DefaultLwM2MRoute{" +
-                "resource='" + resource + '\'' +
-                "path='" + path + '\'' +
-                ", messageType='" + messageType + '\'' +
+                "operation=" + operation +
+                ", path='" + path + '\'' +
+                ", payloadType=" + payloadType +
                 ", upstream=" + upstream +
                 ", downstream=" + downstream +
                 ", group='" + group + '\'' +
@@ -54,9 +55,9 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
 
 
     static class DefaultLwM2MRouteBuilder implements LwM2MRoute.Builder {
-        private LwM2MResource resource;
+        private LwM2MOperation operation;
         private String path;
-        private String messageType;
+        private MessagePayloadType payloadType;
         private boolean upstream;
         private boolean downstream;
         private String group;
@@ -72,14 +73,14 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
         }
 
         @Override
-        public Builder resource(LwM2MResource resource) {
-            this.resource = resource;
+        public Builder operation(LwM2MOperation operation) {
+            this.operation = operation;
             return this;
         }
 
         @Override
-        public Builder messageType(String msgType) {
-            this.messageType = msgType;
+        public Builder payloadType(MessagePayloadType payloadType) {
+            this.payloadType = payloadType;
             return this;
         }
 
@@ -109,11 +110,11 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
         }
 
         public DefaultLwM2MRoute build() {
-            return new DefaultLwM2MRoute(resource, path, messageType, upstream, downstream, group, description, example);
+            return new DefaultLwM2MRoute(operation, path, payloadType, upstream, downstream, group, description, example);
         }
 
         public String toString() {
-            return "DefaultMqttRoute.DefaultMqttRouteBuilder(resource=" + this.resource + ", path=" + this.path + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
+            return "DefaultMqttRoute.DefaultMqttRouteBuilder(operation=" + this.operation + ", path=" + this.path + ", payloadType=" + this.payloadType + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
         }
     }
 
