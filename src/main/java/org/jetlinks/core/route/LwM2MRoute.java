@@ -2,7 +2,6 @@ package org.jetlinks.core.route;
 
 import org.jetlinks.core.message.codec.MessagePayloadType;
 import org.jetlinks.core.message.codec.lwm2m.LwM2MOperation;
-import org.jetlinks.core.message.codec.lwm2m.LwM2MResource;
 
 import javax.annotation.Nullable;
 import javax.validation.constraints.NotNull;
@@ -42,8 +41,8 @@ public interface LwM2MRoute extends Route {
         return getPath();
     }
 
-    static LwM2MRoute.Builder builder(LwM2MResource resource) {
-        return DefaultLwM2MRoute.builder().resource(resource);
+    static LwM2MRoute.Builder builder(String path) {
+        return DefaultLwM2MRoute.builder().path(path);
     }
 
     interface Builder {
