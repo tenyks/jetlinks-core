@@ -21,6 +21,12 @@ public interface LwM2MRoute extends Route {
     String  getPath();
 
     /**
+     * @return  返回设备消息的类型
+     */
+    @NotNull
+    String  getMessageType();
+
+    /**
      * @return  返回消息负载的类型
      */
     @Nullable
@@ -47,17 +53,21 @@ public interface LwM2MRoute extends Route {
 
     interface Builder {
 
-        LwM2MRoute.Builder operation(LwM2MOperation operation);
-
         LwM2MRoute.Builder group(String group);
 
         LwM2MRoute.Builder path(String path);
 
-        LwM2MRoute.Builder payloadType(MessagePayloadType type);
+        LwM2MRoute.Builder messageType(String messageType);
 
-        LwM2MRoute.Builder downstream(boolean downstream);
+        LwM2MRoute.Builder payloadType(MessagePayloadType payloadType);
 
-        LwM2MRoute.Builder upstream(boolean downstream);
+        LwM2MRoute.Builder upstreamRequest(LwM2MOperation operation);
+
+        LwM2MRoute.Builder upstreamResponse();
+
+        LwM2MRoute.Builder downstreamRequest(LwM2MOperation operation);
+
+        LwM2MRoute.Builder downstreamResponse();
 
         LwM2MRoute.Builder description(String description);
 

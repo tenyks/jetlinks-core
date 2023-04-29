@@ -6,4 +6,6 @@ package org.jetlinks.core.message.codec.lwm2m;
  * @date 2023/3/27
  */
 public interface LwM2MDownlinkMessage extends LwM2MMessage {
+
+
 }

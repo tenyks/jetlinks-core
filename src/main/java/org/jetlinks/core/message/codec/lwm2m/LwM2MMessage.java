@@ -4,7 +4,6 @@ import org.eclipse.californium.core.coap.Option;
 import org.jetlinks.core.message.codec.EncodedMessage;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
@@ -16,29 +15,21 @@ import java.util.Map;
  */
 public interface LwM2MMessage extends EncodedMessage {
 
-    /**
-     * @return  消息关联的对象和资源
-     */
-    LwM2MResource getObjectAndResource();
-
-    int         getCode();
-
-    @Nullable
-    String      getPath();
-
     @Nonnull
-    String      getRegistrationId();
+    String          getRegistrationId();
 
-    @Nonnull
-    int         getMessageId();
+    Integer         getMessageId();
 
-    @Nonnull
+    List<Option>    getOptions();
+
+    String          getDeviceId();
+
+    String          getPath();
+
+    Integer         getResponseCode();
+
+    LwM2MOperation  getRequestOperation();
+
     Map<String, String> getAdditionalAttributes();
-
-    @Nonnull
-    List<Option> getOptions();
-
-    String  getDeviceId();
-
 
 }

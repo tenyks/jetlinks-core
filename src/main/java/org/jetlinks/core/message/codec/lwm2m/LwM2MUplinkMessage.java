@@ -10,4 +10,5 @@ package org.jetlinks.core.message.codec.lwm2m;
 public interface LwM2MUplinkMessage extends LwM2MMessage {
 
 
+
 }

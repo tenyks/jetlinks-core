@@ -9,26 +9,32 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
 
     private final LwM2MOperation    operation;
     private final String    path;
+    private final String    messageType;
     private final MessagePayloadType payloadType;
     private final boolean upstream;
     private final boolean downstream;
+    private final boolean request;
     private final String group;
     private final String description;
     private final String example;
 
-    DefaultLwM2MRoute(LwM2MOperation operation,
-                      String path,
+    DefaultLwM2MRoute(String path,
+                      LwM2MOperation operation,
                       MessagePayloadType payloadType,
+                      String messageType,
                       boolean upstream,
                       boolean downstream,
+                      boolean request,
                       String group,
                       String description,
                       String example) {
-        this.operation = operation;
         this.path = path;
+        this.operation = operation;
         this.payloadType = payloadType;
+        this.messageType = messageType;
         this.upstream = upstream;
         this.downstream = downstream;
+        this.request = request;
         this.group = group;
         this.description = description;
         this.example = example;
@@ -39,9 +45,11 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
         return "DefaultLwM2MRoute{" +
                 "operation=" + operation +
                 ", path='" + path + '\'' +
+                ", messageType='" + messageType + '\'' +
                 ", payloadType=" + payloadType +
                 ", upstream=" + upstream +
                 ", downstream=" + downstream +
+                ", request=" + request +
                 ", group='" + group + '\'' +
                 ", description='" + description + '\'' +
                 ", example='" + example + '\'' +
@@ -52,14 +60,14 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
         return new DefaultLwM2MRoute.DefaultLwM2MRouteBuilder();
     }
 
-
-
     static class DefaultLwM2MRouteBuilder implements LwM2MRoute.Builder {
         private LwM2MOperation operation;
         private String path;
         private MessagePayloadType payloadType;
+        private String messageType;
         private boolean upstream;
         private boolean downstream;
+        private boolean request;
         private String group;
         private String description;
         private String example;
@@ -72,9 +80,8 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
             return this;
         }
 
-        @Override
-        public Builder operation(LwM2MOperation operation) {
-            this.operation = operation;
+        public DefaultLwM2MRoute.DefaultLwM2MRouteBuilder messageType(String messageType) {
+            this.messageType = messageType;
             return this;
         }
 
@@ -84,13 +91,40 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
             return this;
         }
 
-        public DefaultLwM2MRoute.DefaultLwM2MRouteBuilder upstream(boolean upstream) {
-            this.upstream = upstream;
+        @Override
+        public Builder upstreamResponse() {
+            this.upstream = true;
+            this.downstream = false;
+            this.request = false;
             return this;
         }
 
-        public DefaultLwM2MRoute.DefaultLwM2MRouteBuilder downstream(boolean downstream) {
-            this.downstream = downstream;
+        @Override
+        public Builder upstreamRequest(LwM2MOperation operation) {
+            this.upstream = true;
+            this.downstream = false;
+            this.request = true;
+            this.operation = operation;
+
+            return this;
+        }
+
+        @Override
+        public Builder downstreamRequest(LwM2MOperation operation) {
+            this.upstream = false;
+            this.downstream = true;
+            this.request = true;
+            this.operation = operation;
+
+            return this;
+        }
+
+        @Override
+        public Builder downstreamResponse() {
+            this.upstream = false;
+            this.downstream = true;
+            this.request = false;
+
             return this;
         }
 
@@ -110,11 +144,23 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
         }
 
         public DefaultLwM2MRoute build() {
-            return new DefaultLwM2MRoute(operation, path, payloadType, upstream, downstream, group, description, example);
+            return new DefaultLwM2MRoute(path, operation, payloadType, messageType, upstream, downstream, request, group, description, example);
         }
 
+        @Override
         public String toString() {
-            return "DefaultMqttRoute.DefaultMqttRouteBuilder(operation=" + this.operation + ", path=" + this.path + ", payloadType=" + this.payloadType + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
+            return "DefaultLwM2MRouteBuilder{" +
+                    "operation=" + operation +
+                    ", path='" + path + '\'' +
+                    ", payloadType=" + payloadType +
+                    ", messageType='" + messageType + '\'' +
+                    ", upstream=" + upstream +
+                    ", downstream=" + downstream +
+                    ", request=" + request +
+                    ", group='" + group + '\'' +
+                    ", description='" + description + '\'' +
+                    ", example='" + example + '\'' +
+                    '}';
         }
     }
 

@@ -10,7 +10,9 @@ public enum LwM2MOperation {
     WriteAttributes("PUT"),
     Execute("POST"),
     Create("POST"),
-    Delete("DELETE");
+    Delete("DELETE"),
+    Observe("GET"),
+    ;
 
     /**
      * 对应的CoAP协议的method属性
