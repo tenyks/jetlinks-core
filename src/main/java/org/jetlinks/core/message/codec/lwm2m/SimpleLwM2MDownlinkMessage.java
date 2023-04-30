@@ -12,4 +12,8 @@ public class SimpleLwM2MDownlinkMessage extends AbstractLwM2MMessage implements 
         this.setRequestOperation(route.getOperation());
         this.setPath(route.getPath());
     }
+
+    public SimpleLwM2MDownlinkMessage() {
+
+    }
 }
