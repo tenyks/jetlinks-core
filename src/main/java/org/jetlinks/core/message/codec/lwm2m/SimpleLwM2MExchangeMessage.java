@@ -86,6 +86,30 @@ public class SimpleLwM2MExchangeMessage implements LwM2MExchangeMessage {
     }
 
     @Override
+    public String getRegistrationId() {
+        if (uplinkMessage != null) {
+            return uplinkMessage.getRegistrationId();
+        }
+        return downlinkMessage.getRegistrationId();
+    }
+
+    @Override
+    public Integer getMessageId() {
+        Integer msgId = null;
+        if (uplinkMessage != null) {
+            msgId = uplinkMessage.getMessageId();
+            if (msgId != null) {
+                return msgId;
+            }
+        }
+        if (downlinkMessage != null) {
+            msgId = downlinkMessage.getMessageId();
+            return msgId;
+        }
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "SimpleLwM2MExchangeMessage{" +
                 "isUpFirstMode=" + isUpFirstMode +

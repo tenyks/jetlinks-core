@@ -72,4 +72,8 @@ public interface LwM2MExchangeMessage {
      * @return  交换消息过程发生的异常错误
      */
     Exception   getException();
+
+    String  getRegistrationId();
+
+    Integer  getMessageId();
 }
