@@ -47,7 +47,7 @@ public class SimpleLwM2MExchangeMessage implements LwM2MExchangeMessage {
     public static SimpleLwM2MExchangeMessage ofFail(LwM2MDownlinkMessage downlinkMessage,
                                                     String resultCode, String resultMessage, Exception e) {
         if (resultMessage == null) resultMessage = "交换消息不成功";
-        return new SimpleLwM2MExchangeMessage(true, downlinkMessage, null, resultCode, resultMessage, e);
+        return new SimpleLwM2MExchangeMessage(false, downlinkMessage, null, resultCode, resultMessage, e);
     }
 
     @Override

@@ -21,6 +21,13 @@ public interface LwM2MRoute extends Route {
     String  getPath();
 
     /**
+     * @return  如果配置的泛路由地址保护输入的地址返回true,否则返回false
+     */
+    default boolean acceptPath(String path) {
+        return getPath().equals(path);
+    }
+
+    /**
      * @return  返回设备消息的类型
      */
     @NotNull

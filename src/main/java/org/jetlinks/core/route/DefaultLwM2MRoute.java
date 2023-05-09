@@ -41,6 +41,24 @@ public class DefaultLwM2MRoute implements LwM2MRoute {
     }
 
     @Override
+    public boolean acceptPath(String path) {
+        if (this.path.contains("*")) {
+            String solidPath = path.replace('*', '0');
+            if (solidPath.equalsIgnoreCase(path)) return true;
+
+            solidPath = path.replace('*', '1');
+            if (solidPath.equalsIgnoreCase(path)) return true;
+
+            solidPath = path.replace('*', '2');
+            if (solidPath.equalsIgnoreCase(path)) return true;
+
+            return false;
+        } else {
+            return this.path.equalsIgnoreCase(path);
+        }
+    }
+
+    @Override
     public String toString() {
         return "DefaultLwM2MRoute{" +
                 "operation=" + operation +
