@@ -39,7 +39,7 @@ public interface Headers {
     HeaderKey<String> clientAddress = HeaderKey.of("cliAddr", "/", String.class);
 
     /**
-     * 发送既不管
+     * 发送即不管
      */
     HeaderKey<Boolean> sendAndForget = HeaderKey.of("sendAndForget", false);
 
@@ -47,6 +47,11 @@ public interface Headers {
      * 指定发送消息的超时时间
      */
     HeaderKey<Long> timeout = HeaderKey.of("timeout", TimeUnit.SECONDS.toMillis(10), Long.class);
+
+    /**
+     * 指异步下发消息的有限生命时长，超出指定时长的消息将不再下发
+     */
+    HeaderKey<Long> ttl = HeaderKey.of("ttl", TimeUnit.SECONDS.toMillis(300), Long.class);
 
     /**
      * 是否合并历史属性数据,设置此消息头后,将会把历史最新的消息合并到消息体里
