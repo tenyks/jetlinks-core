@@ -5,6 +5,7 @@ import org.jetlinks.core.device.DeviceOperator;
 import org.jetlinks.core.message.codec.EncodedMessage;
 import org.jetlinks.core.message.codec.TraceDeviceSession;
 import org.jetlinks.core.message.codec.Transport;
+import org.jetlinks.core.message.codec.lwm2m.LwM2MMessage;
 import org.jetlinks.core.message.codec.mqtt.MqttMessage;
 import org.jetlinks.core.trace.TraceHolder;
 import reactor.core.publisher.Mono;
@@ -58,8 +59,9 @@ public interface DeviceSession {
      * 发送消息给会话
      *
      * @param encodedMessage 消息
-     * @return 是否成功
+     * @return 是否成功，如果是异步发生返回Void
      * @see MqttMessage
+     * @see LwM2MMessage
      */
     Mono<Boolean> send(EncodedMessage encodedMessage);
 
