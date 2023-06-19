@@ -22,8 +22,6 @@ public class DefaultCodecsSupport implements CodecsSupport {
     private static Map<Class, Codec> staticCodec = new HashMap<>();
 
     static {
-
-
         staticCodec.put(byte.class, ByteCodec.INSTANCE);
         staticCodec.put(Byte.class, ByteCodec.INSTANCE);
 
