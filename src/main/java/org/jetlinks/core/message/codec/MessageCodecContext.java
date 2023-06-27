@@ -61,6 +61,9 @@ public interface MessageCodecContext extends Wrapper {
     /**
      * 预留功能,获取配置信息
      *
+     * 可选配置信息：
+     * <li>secureKey：身份认证Key</li>
+     *
      * @param key KEY
      * @return 配置信息
      */
