@@ -10,8 +10,11 @@ import org.jetlinks.core.message.state.DeviceStateCheckMessage;
 import org.jetlinks.core.message.state.DeviceStateCheckMessageReply;
 
 /**
- * 消息扩展函数
+ * 消息对象的扩展函数
  * @param <T>
+ * @author tenyks.lee
+ * @since 1.2
+ * @version 1.0
  */
 public interface ExtendedFunction<T> {
 

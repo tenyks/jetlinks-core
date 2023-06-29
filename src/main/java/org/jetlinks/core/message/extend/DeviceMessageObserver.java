@@ -12,6 +12,8 @@ import org.jetlinks.core.message.property.WritePropertyMessageReply;
 import org.jetlinks.core.message.state.DeviceStateCheckMessage;
 import org.jetlinks.core.message.state.DeviceStateCheckMessageReply;
 
+import java.util.List;
+
 /**
  * 物模型Header、Property和Parameter及取值
  * @author tenyks.lee
@@ -22,6 +24,10 @@ public class DeviceMessageObserver implements ExtendedFunction<Iterable<ThingIte
 
     public Iterable<ThingItemAndValue>     observe(ThingMessage msg) {
         return route(msg);
+    }
+
+    private void collect(List<ThingItemAndValue> buf) {
+
     }
 
     @Override
