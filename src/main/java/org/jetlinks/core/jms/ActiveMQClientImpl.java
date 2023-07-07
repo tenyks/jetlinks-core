@@ -28,22 +28,18 @@ public class ActiveMQClientImpl implements JMSClient {
 
     private MessageProducer producer2;
 
-    public ActiveMQClientImpl(String name, String url) {
+    public ActiveMQClientImpl(String name, String url) throws JMSException {
         this.name = name;
 
-        try {
-            ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory(url);
-            cf.setAlwaysSessionAsync(false);
-            cf.setAlwaysSyncSend(true);
+        ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory(url);
+        cf.setAlwaysSessionAsync(false);
+        cf.setAlwaysSyncSend(true);
 
-            Connection connection = cf.createConnection();
-            connection.start();
+        Connection connection = cf.createConnection();
+        connection.start();
 
-            this.connection = connection;
-            this.session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
-        } catch (Exception e) {
-            log.error("[0x09AMQCI3536]初始化时异常失败：", e);
-        }
+        this.connection = connection;
+        this.session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
     }
 
     @Override
