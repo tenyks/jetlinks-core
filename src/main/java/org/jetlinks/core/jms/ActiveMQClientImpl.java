@@ -128,4 +128,12 @@ public class ActiveMQClientImpl implements JMSClient {
             this.connection = null;
         }
     }
+
+    @Override
+    public String toString() {
+        return "ActiveMQClientImpl{" +
+                "name='" + name + '\'' +
+                ", connection=" + connection +
+                '}';
+    }
 }
