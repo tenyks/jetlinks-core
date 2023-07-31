@@ -83,7 +83,7 @@ class DefaultThingTemplate implements ThingTemplate, StorageConfigurable {
     @Override
     public Mono<Boolean> setConfigs(Map<String, Object> conf) {
         Map<String, Object> configs = new HashMap<>(conf);
-        if (conf.containsKey(metadata.getKey())) {
+        if (conf.containsKey(DeviceConfigKey.metadata.getKey())) {
             configs.put(ThingsConfigKeys.lastMetadataTimeKey.getKey(), lastMetadataTime = System.currentTimeMillis());
             return StorageConfigurable.super
                     .setConfigs(configs)

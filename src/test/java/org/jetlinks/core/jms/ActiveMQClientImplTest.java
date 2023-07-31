@@ -10,7 +10,7 @@ public class ActiveMQClientImplTest {
     private JMSClient client;
 
     @Before
-    public void init() {
+    public void init() throws JMSException {
         client = new ActiveMQClientImpl("iot-client", "tcp://MyDevS1:61616");
     }
 
