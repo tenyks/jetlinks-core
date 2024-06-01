@@ -2,7 +2,7 @@ package org.jetlinks.core.message.codec;
 
 public enum MessagePayloadType {
 
-    JSON, STRING, BINARY, HEX, UNKNOWN;
+    JSON, STRING, BINARY, HEX, TLV, UNKNOWN;
 
     public static MessagePayloadType of(String of) {
         for (MessagePayloadType value : MessagePayloadType.values()) {

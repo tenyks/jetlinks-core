@@ -1,5 +1,12 @@
 package org.jetlinks.core.utils;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Hex;
+
+import java.nio.charset.StandardCharsets;
+
 /**
  * 字节转换工具
  *
@@ -507,5 +514,10 @@ public class BytesUtils {
     @Deprecated
     public static byte[] toLowBytes(float src) {
         return toLowBytes(Float.floatToIntBits(src));
+    }
+
+    public static ByteBuf decodeHex(ByteBuf buf, int srcIdx, int length) throws DecoderException {
+        byte[] originalBytes = Hex.decodeHex(new String(buf.array(), srcIdx, length, StandardCharsets.UTF_8));
+        return Unpooled.wrappedBuffer(originalBytes);
     }
 }
