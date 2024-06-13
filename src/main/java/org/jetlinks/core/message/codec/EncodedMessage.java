@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
+import org.apache.commons.codec.binary.Hex;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -43,6 +44,21 @@ public interface EncodedMessage  {
 
     default byte[] payloadAsBytes() {
         return ByteBufUtil.getBytes(getPayload());
+    }
+
+    default String  getPayloadAsHex(int maxLength) {
+        ByteBuf buf = getPayload();
+        byte[] tmp;
+
+        buf.readerIndex(0);
+        if (buf.readableBytes() > maxLength) {
+            tmp = new byte[maxLength];
+            buf.readBytes(tmp);
+        } else {
+            tmp = buf.array();
+        }
+
+        return Hex.encodeHexString(tmp);
     }
 
     @Deprecated
