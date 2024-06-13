@@ -43,7 +43,9 @@ public interface EncodedMessage  {
     }
 
     default byte[] payloadAsBytes() {
-        return ByteBufUtil.getBytes(getPayload());
+        ByteBuf payload = getPayload();
+        payload.readerIndex(0);
+        return ByteBufUtil.getBytes(payload);
     }
 
     default String  getPayloadAsHex(int maxLength) {
