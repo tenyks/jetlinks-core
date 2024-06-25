@@ -23,6 +23,17 @@ public interface MqttRoute extends Route {
                 .topic(topic);
     }
 
+    /**
+     *
+     * @param appId
+     * @param productId
+     * @param deviceId
+     * @return
+     */
+    default String getSolidTopic(String appId, String productId, String deviceId) {
+        return null;
+    }
+
     interface Builder{
 
         Builder group(String group);
