@@ -6,6 +6,7 @@ import lombok.Getter;
 class DefaultMqttRoute implements MqttRoute {
 
     private final String topic;
+    private final transient TemplateTopic templateTopic;
     private final boolean upstream;
     private final boolean downstream;
     private final int qos;
@@ -21,6 +22,7 @@ class DefaultMqttRoute implements MqttRoute {
                      String description,
                      String example) {
         this.topic = topic;
+        this.templateTopic = new TemplateTopic(topic, 1);
         this.upstream = upstream;
         this.downstream = downstream;
         this.qos = qos;
@@ -29,6 +31,10 @@ class DefaultMqttRoute implements MqttRoute {
         this.example = example;
     }
 
+    @Override
+    public TemplateTopic getTopicTemplate() {
+        return templateTopic;
+    }
 
     static DefaultMqttRouteBuilder builder() {
         return new DefaultMqttRouteBuilder();
