@@ -520,4 +520,20 @@ public class BytesUtils {
         byte[] originalBytes = Hex.decodeHex(new String(buf.array(), srcIdx, length, StandardCharsets.UTF_8));
         return Unpooled.wrappedBuffer(originalBytes);
     }
+
+    /**
+     * 解码Hex字符串，自动移除空格、换行符等
+     */
+    public static ByteBuf fromHexStrWithTrim(String hexStr) throws DecoderException {
+        StringBuilder sb = new StringBuilder();
+
+        hexStr.chars().forEach((c) -> {
+            if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F')) {
+                sb.append((char)c);
+            }
+        });
+
+        byte[] originalBytes = Hex.decodeHex(sb.toString());
+        return Unpooled.wrappedBuffer(originalBytes);
+    }
 }
