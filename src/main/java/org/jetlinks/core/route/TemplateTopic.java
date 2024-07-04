@@ -1,5 +1,6 @@
 package org.jetlinks.core.route;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,10 @@ import java.util.List;
  * @date 2024/6/26
  * @since V3.1.0
  */
-public class TemplateTopic {
+public class TemplateTopic implements Serializable {
+
+    private static final long serialVersionUID = -8114892490519282076L;
+
     private final String    templateUri;
 
     /**
