@@ -9,6 +9,7 @@ class DefaultMqttRoute implements MqttRoute {
     private final transient TemplateTopic templateTopic;
     private final boolean upstream;
     private final boolean downstream;
+    private final boolean downstreamForFunctionHandleResponse;
     private final int qos;
     private final String group;
     private final String description;
@@ -17,6 +18,7 @@ class DefaultMqttRoute implements MqttRoute {
     DefaultMqttRoute(String topic,
                      boolean upstream,
                      boolean downstream,
+                     boolean downstreamForFunctionHandleResponse,
                      int qos,
                      String group,
                      String description,
@@ -25,6 +27,7 @@ class DefaultMqttRoute implements MqttRoute {
         this.templateTopic = new TemplateTopic(topic, 1);
         this.upstream = upstream;
         this.downstream = downstream;
+        this.downstreamForFunctionHandleResponse = downstreamForFunctionHandleResponse;
         this.qos = qos;
         this.group = group;
         this.description = description;
@@ -45,6 +48,7 @@ class DefaultMqttRoute implements MqttRoute {
         private String topic;
         private boolean upstream;
         private boolean downstream;
+        private boolean downstreamForFunctionHandleResponse;
         private int qos;
         private String group;
         private String description;
@@ -64,7 +68,24 @@ class DefaultMqttRoute implements MqttRoute {
         }
 
         public DefaultMqttRouteBuilder downstream(boolean downstream) {
-            this.downstream = downstream;
+            if (downstream) {
+                this.downstream = true;
+            } else {
+                this.downstream = false;
+                this.downstreamForFunctionHandleResponse = false;
+            }
+
+            return this;
+        }
+
+        public DefaultMqttRouteBuilder downstreamForFunctionHandleResponse(boolean downstreamForFunctionHandleResponse) {
+            if (downstreamForFunctionHandleResponse) {
+                this.downstream = true;
+                this.downstreamForFunctionHandleResponse = true;
+            } else {
+                this.downstreamForFunctionHandleResponse = false;
+            }
+
             return this;
         }
 
@@ -89,11 +110,11 @@ class DefaultMqttRoute implements MqttRoute {
         }
 
         public DefaultMqttRoute build() {
-            return new DefaultMqttRoute(topic, upstream, downstream, qos, group, description, example);
+            return new DefaultMqttRoute(topic, upstream, downstream, downstreamForFunctionHandleResponse, qos, group, description, example);
         }
 
         public String toString() {
-            return "DefaultMqttRoute.DefaultMqttRouteBuilder(topic=" + this.topic + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", qos=" + this.qos + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
+            return "DefaultMqttRoute.DefaultMqttRouteBuilder(topic=" + this.topic + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", downstreamForFunctionHandleResponse=" + this.downstreamForFunctionHandleResponse + ", qos=" + this.qos + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
         }
     }
 }

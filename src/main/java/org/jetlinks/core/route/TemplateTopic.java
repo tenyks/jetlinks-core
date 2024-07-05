@@ -91,4 +91,12 @@ public class TemplateTopic implements Serializable {
 
         return null;
     }
+
+    public String getTemplateUri() {
+        return templateUri;
+    }
+
+    public int getPattern() {
+        return pattern;
+    }
 }

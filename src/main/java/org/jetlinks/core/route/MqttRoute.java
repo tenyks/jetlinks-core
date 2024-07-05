@@ -10,6 +10,8 @@ public interface MqttRoute extends Route {
 
     boolean isDownstream();
 
+    boolean isDownstreamForFunctionHandleResponse();
+
     default int getQos() {
         return 0;
     }
@@ -34,6 +36,8 @@ public interface MqttRoute extends Route {
         Builder qos(int qos);
 
         Builder downstream(boolean downstream);
+
+        Builder downstreamForFunctionHandleResponse(boolean downstream);
 
         Builder upstream(boolean downstream);
 
