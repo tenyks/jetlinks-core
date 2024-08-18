@@ -4,6 +4,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 import javax.jms.*;
 
@@ -34,6 +35,24 @@ public class ActiveMQClientImpl implements JMSClient {
         ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory(url);
         cf.setAlwaysSessionAsync(false);
         cf.setAlwaysSyncSend(true);
+
+        Connection connection = cf.createConnection();
+        connection.start();
+
+        this.connection = connection;
+        this.session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
+    }
+
+    public ActiveMQClientImpl(String name, String url, String username, String password) throws JMSException {
+        this.name = name;
+
+        ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory(url);
+        cf.setAlwaysSessionAsync(false);
+        cf.setAlwaysSyncSend(true);
+        if (!StringUtils.isEmpty(username)) {
+            cf.setUserName(username);
+            cf.setPassword(password);
+        }
 
         Connection connection = cf.createConnection();
         connection.start();
