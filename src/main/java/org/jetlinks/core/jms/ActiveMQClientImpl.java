@@ -51,7 +51,9 @@ public class ActiveMQClientImpl implements JMSClient {
         cf.setAlwaysSyncSend(true);
         if (!StringUtils.isEmpty(username)) {
             cf.setUserName(username);
-            cf.setPassword(password);
+            if (!StringUtils.isEmpty(password)) {
+                cf.setPassword(password);
+            }
         }
 
         Connection connection = cf.createConnection();
