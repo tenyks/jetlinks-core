@@ -12,6 +12,8 @@ import java.io.ObjectOutput;
 @Setter
 public class DeviceLogMessage extends CommonDeviceMessage<DeviceLogMessage> {
 
+    private static final long serialVersionUID = 7283998979012383219L;
+
     private String log;
 
     @Override

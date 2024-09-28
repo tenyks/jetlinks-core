@@ -20,6 +20,8 @@ public class FunctionInvokeMessage extends CommonDeviceMessage<FunctionInvokeMes
         implements RepayableDeviceMessage<FunctionInvokeMessageReply>,
         ThingFunctionInvokeMessage<FunctionInvokeMessageReply> {
 
+    private static final long serialVersionUID = -2514911576610338683L;
+
     private String functionId;
 
     public FunctionInvokeMessage() {

@@ -24,6 +24,8 @@ import static org.jetlinks.core.utils.SerializeUtils.*;
 @Setter
 public class RequestFirmwareMessageReply extends CommonDeviceMessageReply<RequestFirmwareMessageReply> {
 
+    private static final long serialVersionUID = 9039648363390458634L;
+
     /**
      * 固件下载地址
      */

@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class UpdateTagMessage extends CommonDeviceMessage<UpdateTagMessage> implements UpdateTingTagsMessage {
+public class UpdateTagMessage extends CommonDeviceMessage<UpdateTagMessage> implements UpdateThingTagsMessage {
 
     @Setter
     private Map<String, Object> tags;
@@ -53,13 +53,13 @@ public class UpdateTagMessage extends CommonDeviceMessage<UpdateTagMessage> impl
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
-        UpdateTingTagsMessage.super.writeExternal(out);
+        UpdateThingTagsMessage.super.writeExternal(out);
         SerializeUtils.writeKeyValue(tags,out);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        UpdateTingTagsMessage.super.readExternal(in);
+        UpdateThingTagsMessage.super.readExternal(in);
         SerializeUtils.readKeyValue(in,this::tag);
     }
 }

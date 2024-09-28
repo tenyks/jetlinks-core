@@ -18,6 +18,8 @@ import java.util.List;
 public class DefaultFunctionInvokeMessage extends CommonThingMessage<DefaultFunctionInvokeMessage>
         implements ThingFunctionInvokeMessage<DefaultFunctionInvokeMessageReply> {
 
+    private static final long serialVersionUID = -3945841049513930333L;
+
     private String functionId;
 
     public DefaultFunctionInvokeMessage() {

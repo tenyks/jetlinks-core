@@ -11,6 +11,9 @@ import org.jetlinks.core.message.function.DefaultFunctionInvokeMessageReply;
 import org.jetlinks.core.message.function.FunctionInvokeMessage;
 import org.jetlinks.core.message.function.FunctionInvokeMessageReply;
 import org.jetlinks.core.message.property.*;
+import org.jetlinks.core.message.request.DefaultDeviceRequestMessage;
+import org.jetlinks.core.message.request.DefaultDeviceRequestMessageReply;
+import org.jetlinks.core.message.request.DeviceRequestMessage;
 import org.jetlinks.core.message.state.DeviceStateCheckMessage;
 import org.jetlinks.core.message.state.DeviceStateCheckMessageReply;
 import org.jetlinks.core.things.ThingId;
@@ -125,6 +128,11 @@ public enum MessageType {
     //设备拉取固件信息响应
     REQUEST_FIRMWARE_REPLY(RequestFirmwareMessageReply::new),
 
+    //设备认证请求
+    DEVICE_AUTHORIZE_REQUEST(RequestFirmwareMessage::new),
+    //设备认证请求
+    DEVICE_AUTHORIZE_REQUEST_REPLY(RequestFirmwareMessageReply::new),
+
     //更新设备固件
     UPGRADE_FIRMWARE(UpgradeFirmwareMessage::new),
 
@@ -139,7 +147,7 @@ public enum MessageType {
 
     //更新标签
     //since 1.1.2
-    UPDATE_TAG(UpdateTagMessage::new, DefaultUpdateTingTagsMessage::new),
+    UPDATE_TAG(UpdateTagMessage::new, DefaultUpdateThingTagsMessage::new),
 
     //日志
     //since 1.1.4
@@ -151,6 +159,10 @@ public enum MessageType {
     //状态检查
     STATE_CHECK(DeviceStateCheckMessage::new),
     STATE_CHECK_REPLY(DeviceStateCheckMessageReply::new),
+
+    //设备调用API请求及响应
+    DEVICE_REQUEST(DefaultDeviceRequestMessage::new),
+    DEVICE_REQUEST_REPLY(DefaultDeviceRequestMessageReply::new),
 
     //未知消息
     UNKNOWN(null) {

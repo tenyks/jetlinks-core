@@ -14,7 +14,7 @@ import java.util.Map;
  * @author zhouhao
  * @since 1.1.9
  */
-public interface UpdateTingTagsMessage extends ThingMessage {
+public interface UpdateThingTagsMessage extends ThingMessage {
 
     /**
      * key为标签ID，value为标签值
@@ -24,7 +24,7 @@ public interface UpdateTingTagsMessage extends ThingMessage {
     @Nullable
     Map<String, Object> getTags();
 
-    UpdateTingTagsMessage tags(Map<String, Object> tags);
+    UpdateThingTagsMessage tags(Map<String, Object> tags);
 
     @Override
     default MessageType getMessageType() {

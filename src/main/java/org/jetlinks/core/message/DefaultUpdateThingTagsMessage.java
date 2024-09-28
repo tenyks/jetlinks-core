@@ -7,7 +7,9 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DefaultUpdateTingTagsMessage extends CommonThingMessage<DefaultUpdateTingTagsMessage> implements UpdateTingTagsMessage {
+public class DefaultUpdateThingTagsMessage extends CommonThingMessage<DefaultUpdateThingTagsMessage> implements UpdateThingTagsMessage {
+
+    private static final long serialVersionUID = -6115346659142868614L;
 
     @Setter
     private Map<String, Object> tags;
@@ -16,7 +18,7 @@ public class DefaultUpdateTingTagsMessage extends CommonThingMessage<DefaultUpda
         return tags == null ? Collections.emptyMap() : tags;
     }
 
-    public DefaultUpdateTingTagsMessage tag(String tag, Object value) {
+    public DefaultUpdateThingTagsMessage tag(String tag, Object value) {
         if (tags == null) {
             tags = new ConcurrentHashMap<>();
         }
@@ -24,7 +26,7 @@ public class DefaultUpdateTingTagsMessage extends CommonThingMessage<DefaultUpda
         return this;
     }
 
-    public DefaultUpdateTingTagsMessage tags(Map<String, Object> tags) {
+    public DefaultUpdateThingTagsMessage tags(Map<String, Object> tags) {
         if (tags == null) {
             return this;
         }

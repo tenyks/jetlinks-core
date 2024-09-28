@@ -1,5 +1,6 @@
 package org.jetlinks.core.device;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,9 @@ import org.jetlinks.core.message.codec.Transport;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MqttAuthenticationRequest implements AuthenticationRequest {
+
+    private static final long serialVersionUID = -6083205376193989944L;
+
     private String clientId;
 
     private String username;
@@ -22,4 +26,6 @@ public class MqttAuthenticationRequest implements AuthenticationRequest {
     private String password;
 
     private Transport transport;
+
+    private JSONObject  extra;
 }

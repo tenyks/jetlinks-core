@@ -15,6 +15,8 @@ import org.jetlinks.core.message.MessageType;
 @Setter
 public class FunctionInvokeMessageReply extends CommonDeviceMessageReply<FunctionInvokeMessageReply> implements ThingFunctionInvokeMessageReply {
 
+    private static final long serialVersionUID = 3532274064481560224L;
+
     private String functionId;
 
     private Object output;
