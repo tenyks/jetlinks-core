@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jetlinks.core.message.CommonDeviceMessage;
 import org.jetlinks.core.message.codec.Transport;
 
 /**
@@ -14,7 +15,7 @@ import org.jetlinks.core.message.codec.Transport;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TcpAuthenticationRequest implements AuthenticationRequest {
+public class TcpAuthenticationMessage extends CommonDeviceMessage<TcpAuthenticationMessage> implements AuthenticationRequest {
 
     private static final long serialVersionUID = 1468625253591912222L;
 
@@ -23,4 +24,6 @@ public class TcpAuthenticationRequest implements AuthenticationRequest {
     private String      password;
 
     private Transport   transport;
+
+
 }

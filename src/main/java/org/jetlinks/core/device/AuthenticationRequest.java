@@ -6,4 +6,5 @@ import java.io.Serializable;
 
 public interface AuthenticationRequest extends Serializable {
     Transport getTransport();
+
 }

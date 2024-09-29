@@ -1,10 +1,7 @@
 package org.jetlinks.core.message.request;
 
-import org.jetlinks.core.GenericHeaderSupport;
-import org.jetlinks.core.message.Message;
-import org.jetlinks.core.message.ThingMessage;
+import org.jetlinks.core.message.CommonDeviceMessageReply;
 
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -16,54 +13,28 @@ import java.io.ObjectOutput;
  * @since V3.1.0
  */
 public class DefaultDeviceRequestMessageReply
-        extends GenericHeaderSupport<DefaultDeviceRequestMessage>
+        extends CommonDeviceMessageReply<DefaultDeviceRequestMessageReply>
         implements DeviceRequestMessageReply {
     private static final long serialVersionUID = -217528289118813065L;
 
-    private String  messageId;
-
-    private String  deviceId;
-
     private String  functionId;
-
-    private long    timestamp = System.currentTimeMillis();
-
-    private String  code;
 
     private Object  output;
 
-    @Override
-    public String getMessageId() {
-        return messageId;
-    }
-
-    @Override
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    @Override
-    public long getTimestamp() {
-        return timestamp;
-    }
-
     public DefaultDeviceRequestMessageReply from(DefaultDeviceRequestMessage message) {
-        this.messageId = message.getMessageId();
-        this.deviceId = message.getDeviceId();
+        messageId(message.getMessageId());
+        setDeviceId(message.getDeviceId());
         this.functionId = message.getFunctionId();
 
         return this;
     }
 
-    @Override
-    public boolean isSuccess() {
-        return (code != null && (code.equals("SUCCESS") || code.startsWith("SUCCESS")));
+    public String getFunctionId() {
+        return functionId;
     }
 
-    @Nullable
-    @Override
-    public String getCode() {
-        return code;
+    public void setOutput(Object output) {
+        this.output = output;
     }
 
     @Override
