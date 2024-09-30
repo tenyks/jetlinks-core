@@ -5,13 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hswebframework.web.bean.FastBeanCopier;
 import org.jetlinks.core.message.CommonDeviceMessage;
-import org.jetlinks.core.message.function.FunctionParameter;
 
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author v-lizy81
@@ -25,29 +22,44 @@ public class DefaultDeviceRequestMessage
          extends CommonDeviceMessage<DefaultDeviceRequestMessage>
             implements DeviceRequestMessage<DefaultDeviceRequestMessageReply> {
 
-    private static final long serialVersionUID = -3133405728058352463L;
+    private static final long   serialVersionUID = -3133405728058352463L;
 
-    private String  functionId;
+    private String              functionId;
 
-    private final List<FunctionParameter> inputs = new ArrayList<>();
+    private final JSONObject    inputs = new JSONObject();
 
     @Override
-    public String getFunctionId() {
+    public String   getFunctionId() {
         return functionId;
     }
 
     @Override
-    public List<FunctionParameter> getInputs() {
-        return inputs;
+    public Object   getInput(String key) {
+        return inputs.get(key);
     }
 
-    public DefaultDeviceRequestMessage addInput(FunctionParameter parameter) {
-        inputs.add(parameter);
+    @Override
+    public String getInputStr(String paramKey) {
+        return inputs.getString(paramKey);
+    }
+
+    @Override
+    public Integer getInputInt(String paramKey) {
+        return inputs.getInteger(paramKey);
+    }
+
+    @Override
+    public Number getInputNum(String paramKey) {
+        return (Number) inputs.get(paramKey);
+    }
+
+    public DefaultDeviceRequestMessage addInput(String paramKey, Object paramVal) {
+        inputs.put(paramKey, paramVal);
         return this;
     }
 
     public DefaultDeviceRequestMessage functionId(String id) {
-        this.functionId=id;
+        this.functionId = id;
         return this;
     }
 

@@ -15,6 +15,8 @@ import org.jetlinks.core.message.MessageType;
 @Setter
 public class EventMessage extends CommonDeviceMessage<EventMessage> implements ThingEventMessage {
 
+    private static final long serialVersionUID = 4765209086341790135L;
+
     private String event;
 
     private Object data;

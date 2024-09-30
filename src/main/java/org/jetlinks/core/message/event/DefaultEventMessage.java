@@ -9,6 +9,8 @@ import org.jetlinks.core.message.MessageType;
 @Setter
 public class DefaultEventMessage extends CommonThingMessage<DefaultEventMessage> implements ThingEventMessage {
 
+    private static final long serialVersionUID = 1427228226014896874L;
+
     private String event;
 
     private Object data;

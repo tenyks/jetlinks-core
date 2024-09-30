@@ -1,10 +1,8 @@
 package org.jetlinks.core.message.request;
 
+import com.alibaba.fastjson.JSONObject;
 import org.jetlinks.core.message.Message;
 import org.jetlinks.core.message.MessageType;
-import org.jetlinks.core.message.function.FunctionParameter;
-
-import java.util.List;
 
 /**
  * @author v-lizy81
@@ -20,7 +18,17 @@ public interface DeviceRequestMessage<R extends DeviceRequestMessageReply> exten
 
     String      getFunctionId();
 
-    List<FunctionParameter> getInputs();
+    JSONObject  getInputs();
+
+    Object      getInput(String paramKey);
+
+    String      getInputStr(String paramKey);
+
+    Integer     getInputInt(String paramKey);
+
+    Number      getInputNum(String paramKey);
+
+    DeviceRequestMessage<R> addInput(String paramKey, Object paramVal);
 
     R           newResponse();
 
