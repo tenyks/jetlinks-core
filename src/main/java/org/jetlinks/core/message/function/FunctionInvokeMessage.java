@@ -28,6 +28,11 @@ public class FunctionInvokeMessage extends CommonDeviceMessage<FunctionInvokeMes
 
     }
 
+    @Override
+    public String getIdentity() {
+        return functionId;
+    }
+
     private List<FunctionParameter> inputs = new ArrayList<>();
 
     @Override

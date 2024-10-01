@@ -25,9 +25,12 @@ import java.util.Set;
 @Getter
 @Setter
 public class ChildDeviceMessage extends CommonDeviceMessage<ChildDeviceMessage> implements RepayableDeviceMessage<ChildDeviceMessageReply> {
-    private String childDeviceId;
 
-    private Message childDeviceMessage;
+    private static final long serialVersionUID = 6219142998576093318L;
+
+    private String      childDeviceId;
+
+    private Message     childDeviceMessage;
 
     public static ChildDeviceMessage create(String deviceId, DeviceMessage message) {
         ChildDeviceMessage msg = new ChildDeviceMessage();

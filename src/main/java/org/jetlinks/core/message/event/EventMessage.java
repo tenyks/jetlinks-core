@@ -26,6 +26,11 @@ public class EventMessage extends CommonDeviceMessage<EventMessage> implements T
     }
 
     @Override
+    public String getIdentity() {
+        return event;
+    }
+
+    @Override
     public EventMessage event(String event) {
         this.event = event;
         return this;

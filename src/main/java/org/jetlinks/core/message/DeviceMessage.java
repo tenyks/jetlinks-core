@@ -10,17 +10,19 @@ import org.jetlinks.core.metadata.Jsonable;
 public interface DeviceMessage extends ThingMessage, Jsonable {
     //ISSUE 为什么继承ThingMessage?
 
-    String getDeviceId();
+    String          getDeviceId();
 
-    long getTimestamp();
+    long            getTimestamp();
 
-    default String getThingId() {
+    default String  getThingId() {
         return getDeviceId();
     }
 
-    default String getThingType() {
+    default String  getThingType() {
         return DeviceThingType.device.getId();
     }
+
+    String          getIdentity();
 
     @Override
     default <T> DeviceMessage addHeader(HeaderKey<T> header, T value) {

@@ -1,6 +1,5 @@
 package org.jetlinks.core.device;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +26,4 @@ public class MqttAuthenticationRequest implements AuthenticationRequest {
 
     private Transport transport;
 
-    private JSONObject  extra;
 }

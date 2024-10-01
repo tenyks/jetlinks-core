@@ -9,6 +9,8 @@ import org.jetlinks.core.GenericHeaderSupport;
 import org.jetlinks.core.enums.ErrorCode;
 import org.jetlinks.core.exception.DeviceOperationException;
 
+import java.util.Optional;
+
 /**
  * @author zhouhao
  * @since 1.0.0
@@ -24,16 +26,22 @@ public class CommonDeviceMessageReply<Self extends CommonDeviceMessageReply<Self
 
     private boolean success = true;
 
-    private String code;
+    private String  code;
 
-    private String message;
+    private String  message;
 
-    private String messageId;
+    private String  messageId;
 
-    private String deviceId;
+    private String  deviceId;
 
-    private long timestamp = System.currentTimeMillis();
+    private long    timestamp = System.currentTimeMillis();
 
+    @Override
+    public String getIdentity() {
+        Optional<Object> o = getHeader("IDENTITY");
+
+        return (String) o.orElse(null);
+    }
 
     @Override
     @JsonIgnore

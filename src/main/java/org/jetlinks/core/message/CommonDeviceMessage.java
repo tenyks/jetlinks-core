@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.hswebframework.web.bean.FastBeanCopier;
 import org.jetlinks.core.GenericHeaderSupport;
 
+import java.util.Optional;
+
 /**
  * @author zhouhao
  * @since 1.0.0
@@ -24,6 +26,13 @@ public class CommonDeviceMessage<SELF extends CommonDeviceMessage<SELF> > extend
     private String deviceId;
 
     private long timestamp = System.currentTimeMillis();
+
+    @Override
+    public String getIdentity() {
+        Optional<Object> o = getHeader("IDENTITY");
+
+        return (String) o.orElse(null);
+    }
 
     @Override
     @JsonIgnore

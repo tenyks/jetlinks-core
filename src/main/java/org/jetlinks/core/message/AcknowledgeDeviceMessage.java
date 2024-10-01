@@ -12,18 +12,18 @@ public class AcknowledgeDeviceMessage extends CommonDeviceMessageReply<Acknowled
 
     private static final long serialVersionUID = 4294426604248260950L;
 
-    private JSONObject  extraParams;
+    private JSONObject output;
 
     @Override
     public MessageType getMessageType() {
         return MessageType.ACKNOWLEDGE;
     }
 
-    public JSONObject getExtraParams() {
-        return extraParams;
+    public JSONObject getOutput() {
+        return output;
     }
 
-    public void setExtraParams(JSONObject extraParams) {
-        this.extraParams = extraParams;
+    public void setOutput(JSONObject output) {
+        this.output = output;
     }
 }

@@ -23,6 +23,8 @@ import java.util.Map;
 @Setter
 public class ReportPropertyMessage extends CommonDeviceMessage<ReportPropertyMessage> implements ThingReportPropertyMessage {
 
+    private static final long serialVersionUID = 685249408239168020L;
+
     /**
      * 属性值信息,key为物模型中的属性ID,value为物模型对应的类型值.
      * <p>
