@@ -1,5 +1,6 @@
 package org.jetlinks.core.message.request;
 
+import com.alibaba.fastjson.JSONObject;
 import org.jetlinks.core.message.CommonDeviceMessageReply;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class DefaultDeviceRequestMessageReply
 
     private String  functionId;
 
-    private Object  output;
+    private JSONObject outputs = new JSONObject();
 
     public DefaultDeviceRequestMessageReply from(DefaultDeviceRequestMessage message) {
         messageId(message.getMessageId());
@@ -33,13 +34,46 @@ public class DefaultDeviceRequestMessageReply
         return functionId;
     }
 
-    public void setOutput(Object output) {
-        this.output = output;
+    @Override
+    public DeviceRequestMessageReply functionId(String functionId) {
+        this.functionId = functionId;
+        return this;
+    }
+
+    public void setOutputs(JSONObject outputs) {
+        this.outputs = outputs;
     }
 
     @Override
-    public Object getOutput() {
-        return output;
+    public JSONObject getOutputs() {
+        return outputs;
+    }
+
+    @Override
+    public Object getOutput(String paramKey) {
+        return (outputs != null ? outputs.get(paramKey) : null);
+    }
+
+    @Override
+    public String getOutputStr(String paramKey) {
+        return (outputs != null ? outputs.getString(paramKey) : null);
+    }
+
+    @Override
+    public Integer getOutputInt(String paramKey) {
+        return (outputs != null ? outputs.getInteger(paramKey) : null);
+    }
+
+    @Override
+    public Number getOutputNum(String paramKey) {
+        return (outputs != null ? (Number) outputs.get(paramKey) : null);
+    }
+
+    @Override
+    public DeviceRequestMessageReply addOutput(String paramKey, Object paramVal) {
+        if (outputs == null) outputs = new JSONObject();
+        outputs.put(paramKey, paramVal);
+        return this;
     }
 
     @Override

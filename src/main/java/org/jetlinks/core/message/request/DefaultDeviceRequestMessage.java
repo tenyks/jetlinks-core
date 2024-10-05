@@ -26,7 +26,7 @@ public class DefaultDeviceRequestMessage
 
     private String              functionId;
 
-    private final JSONObject    inputs = new JSONObject();
+    private JSONObject          inputs = new JSONObject();
 
     @Override
     public String   getFunctionId() {
@@ -34,26 +34,33 @@ public class DefaultDeviceRequestMessage
     }
 
     @Override
-    public Object   getInput(String key) {
-        return inputs.get(key);
+    public Object   getInput(String paramKey) {
+        return (inputs != null ? inputs.get(paramKey) : null);
+    }
+
+    @Override
+    public void setInputs(JSONObject inputs) {
+        this.inputs = inputs;
     }
 
     @Override
     public String getInputStr(String paramKey) {
-        return inputs.getString(paramKey);
+        return (inputs != null ? inputs.getString(paramKey) : null);
     }
 
     @Override
     public Integer getInputInt(String paramKey) {
-        return inputs.getInteger(paramKey);
+        return (inputs != null ? inputs.getInteger(paramKey) : null);
     }
 
     @Override
     public Number getInputNum(String paramKey) {
-        return (Number) inputs.get(paramKey);
+        return (inputs != null ? (Number) inputs.get(paramKey) : null);
     }
 
     public DefaultDeviceRequestMessage addInput(String paramKey, Object paramVal) {
+        if (inputs == null) inputs = new JSONObject();
+
         inputs.put(paramKey, paramVal);
         return this;
     }

@@ -18,7 +18,11 @@ public interface DeviceRequestMessage<R extends DeviceRequestMessageReply> exten
 
     String      getFunctionId();
 
+    DeviceRequestMessage<R> functionId(String functionId);
+
     JSONObject  getInputs();
+
+    void        setInputs(JSONObject inputs);
 
     Object      getInput(String paramKey);
 
