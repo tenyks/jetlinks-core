@@ -22,7 +22,7 @@ public interface DeviceMessage extends ThingMessage, Jsonable {
         return DeviceThingType.device.getId();
     }
 
-    String          getIdentity();
+    String          getServiceId();
 
     @Override
     default <T> DeviceMessage addHeader(HeaderKey<T> header, T value) {

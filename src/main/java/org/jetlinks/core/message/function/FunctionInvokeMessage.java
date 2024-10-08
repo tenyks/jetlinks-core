@@ -29,7 +29,7 @@ public class FunctionInvokeMessage extends CommonDeviceMessage<FunctionInvokeMes
     }
 
     @Override
-    public String getIdentity() {
+    public String getServiceId() {
         return functionId;
     }
 

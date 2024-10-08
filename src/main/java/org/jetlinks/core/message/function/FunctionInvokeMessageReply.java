@@ -24,8 +24,9 @@ public class FunctionInvokeMessageReply extends CommonDeviceMessageReply<Functio
     public FunctionInvokeMessageReply() {
     }
 
-    public MessageType getMessageType() {
-        return MessageType.INVOKE_FUNCTION_REPLY;
+    @Override
+    public String getServiceId() {
+        return functionId;
     }
 
     public static FunctionInvokeMessageReply create() {

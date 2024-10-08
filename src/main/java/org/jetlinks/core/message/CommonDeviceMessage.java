@@ -28,7 +28,7 @@ public class CommonDeviceMessage<SELF extends CommonDeviceMessage<SELF> > extend
     private long timestamp = System.currentTimeMillis();
 
     @Override
-    public String getIdentity() {
+    public String getServiceId() {
         Optional<Object> o = getHeader("IDENTITY");
 
         return (String) o.orElse(null);

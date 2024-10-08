@@ -29,6 +29,11 @@ public class DefaultDeviceRequestMessage
     private JSONObject          inputs = new JSONObject();
 
     @Override
+    public String getServiceId() {
+        return functionId;
+    }
+
+    @Override
     public String   getFunctionId() {
         return functionId;
     }

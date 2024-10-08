@@ -30,6 +30,11 @@ public class DefaultDeviceRequestMessageReply
         return this;
     }
 
+    @Override
+    public String getServiceId() {
+        return functionId;
+    }
+
     public String getFunctionId() {
         return functionId;
     }
