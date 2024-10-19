@@ -31,4 +31,10 @@ public class DateUtils {
         }
     }
 
+    public static String toYYYYMMDDHHmmss19(Date date) {
+        if (date == null) return null;
+
+        return DF_YYYYMMDDHHmmss19.format(date);
+    }
+
 }
