@@ -6,6 +6,7 @@ import lombok.Getter;
 class DefaultMqttRoute implements MqttRoute {
 
     private final String topic;
+    private final String replyTopic;
     private final transient TemplateTopic templateTopic;
     private final boolean upstream;
     private final boolean downstream;
@@ -16,6 +17,7 @@ class DefaultMqttRoute implements MqttRoute {
     private final String example;
 
     DefaultMqttRoute(String topic,
+                     String replyTopic,
                      boolean upstream,
                      boolean downstream,
                      boolean downstreamForFunctionHandleResponse,
@@ -24,6 +26,7 @@ class DefaultMqttRoute implements MqttRoute {
                      String description,
                      String example) {
         this.topic = topic;
+        this.replyTopic = replyTopic;
         this.templateTopic = new TemplateTopic(topic, 1);
         this.upstream = upstream;
         this.downstream = downstream;
@@ -46,6 +49,7 @@ class DefaultMqttRoute implements MqttRoute {
 
     static class DefaultMqttRouteBuilder implements Builder {
         private String topic;
+        private String replyTopic;
         private boolean upstream;
         private boolean downstream;
         private boolean downstreamForFunctionHandleResponse;
@@ -59,6 +63,11 @@ class DefaultMqttRoute implements MqttRoute {
 
         public DefaultMqttRouteBuilder topic(String topic) {
             this.topic = topic;
+            return this;
+        }
+
+        public DefaultMqttRouteBuilder replyTopic(String topic) {
+            this.replyTopic = topic;
             return this;
         }
 
@@ -110,11 +119,15 @@ class DefaultMqttRoute implements MqttRoute {
         }
 
         public DefaultMqttRoute build() {
-            return new DefaultMqttRoute(topic, upstream, downstream, downstreamForFunctionHandleResponse, qos, group, description, example);
+            return new DefaultMqttRoute(topic, replyTopic, upstream, downstream, downstreamForFunctionHandleResponse, qos, group, description, example);
         }
 
         public String toString() {
-            return "DefaultMqttRoute.DefaultMqttRouteBuilder(topic=" + this.topic + ", upstream=" + this.upstream + ", downstream=" + this.downstream + ", downstreamForFunctionHandleResponse=" + this.downstreamForFunctionHandleResponse + ", qos=" + this.qos + ", group=" + this.group + ", description=" + this.description + ", example=" + this.example + ")";
+            return "DefaultMqttRoute.DefaultMqttRouteBuilder(topic=" + this.topic + ", replyTopic=" + this.replyTopic +
+                    ", upstream=" + this.upstream + ", downstream=" + this.downstream +
+                    ", downstreamForFunctionHandleResponse=" + this.downstreamForFunctionHandleResponse +
+                    ", qos=" + this.qos + ", group=" + this.group +
+                    ", description=" + this.description + ", example=" + this.example + ")";
         }
     }
 }

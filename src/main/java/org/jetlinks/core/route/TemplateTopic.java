@@ -19,6 +19,7 @@ public class TemplateTopic implements Serializable {
     private final String    templateUri;
 
     /**
+     * 当pattern=0时，{manufacturerCode}/.../{productId}/.../{deviceId}/.../postfix
      * 当pattern=1时，prefix/.../{manufacturerCode}/.../{productId}/.../{deviceId}/.../postfix
      */
     private final int       pattern;

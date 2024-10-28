@@ -34,11 +34,11 @@ public interface EncodedMessage  {
         return getPayload().toString(StandardCharsets.UTF_8);
     }
 
-    default JSONObject payloadAsJson() {
+    default JSONObject  payloadAsJson() {
         return (JSONObject) JSON.parse(payloadAsBytes());
     }
 
-    default JSONArray payloadAsJsonArray() {
+    default JSONArray   payloadAsJsonArray() {
         return (JSONArray) JSON.parse(payloadAsBytes());
     }
 
