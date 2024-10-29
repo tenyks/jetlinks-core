@@ -2,17 +2,17 @@ package org.jetlinks.core.route;
 
 public interface MqttRoute extends Route {
 
-    String getTopic();
+    String          getTopic();
 
-    TemplateTopic  getTopicTemplate();
+    TemplateTopic   getTopicTemplate();
 
-    boolean isUpstream();
+    boolean         isUpstream();
 
-    boolean isDownstream();
+    boolean         isDownstream();
 
-    boolean isDownstreamForFunctionHandleResponse();
+    boolean         isDownstreamForFunctionHandleResponse();
 
-    default int getQos() {
+    default int     getQos() {
         return 0;
     }
 
