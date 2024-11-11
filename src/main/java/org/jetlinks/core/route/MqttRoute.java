@@ -31,6 +31,8 @@ public interface MqttRoute extends Route {
 
         Builder group(String group);
 
+        Builder manufacturerCode(String manufacturerCode);
+
         Builder topic(String topic);
 
         Builder qos(int qos);

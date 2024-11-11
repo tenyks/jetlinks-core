@@ -16,7 +16,8 @@ class DefaultMqttRoute implements MqttRoute {
     private final String description;
     private final String example;
 
-    DefaultMqttRoute(String topic,
+    DefaultMqttRoute(String manufacturerCode,
+                     String topic,
                      String replyTopic,
                      boolean upstream,
                      boolean downstream,
@@ -27,7 +28,7 @@ class DefaultMqttRoute implements MqttRoute {
                      String example) {
         this.topic = topic;
         this.replyTopic = replyTopic;
-        this.templateTopic = new TemplateTopic(topic, 1);
+        this.templateTopic = new TemplateTopic(topic, 1, manufacturerCode);
         this.upstream = upstream;
         this.downstream = downstream;
         this.downstreamForFunctionHandleResponse = downstreamForFunctionHandleResponse;
@@ -46,10 +47,10 @@ class DefaultMqttRoute implements MqttRoute {
         return new DefaultMqttRouteBuilder();
     }
 
-
     static class DefaultMqttRouteBuilder implements Builder {
-        private String topic;
-        private String replyTopic;
+        private String  manufacturerCode;
+        private String  topic;
+        private String  replyTopic;
         private boolean upstream;
         private boolean downstream;
         private boolean downstreamForFunctionHandleResponse;
@@ -59,6 +60,12 @@ class DefaultMqttRoute implements MqttRoute {
         private String example;
 
         DefaultMqttRouteBuilder() {
+        }
+
+        @Override
+        public DefaultMqttRouteBuilder manufacturerCode(String manufacturerCode) {
+            this.manufacturerCode = manufacturerCode;
+            return this;
         }
 
         public DefaultMqttRouteBuilder topic(String topic) {
@@ -119,11 +126,11 @@ class DefaultMqttRoute implements MqttRoute {
         }
 
         public DefaultMqttRoute build() {
-            return new DefaultMqttRoute(topic, replyTopic, upstream, downstream, downstreamForFunctionHandleResponse, qos, group, description, example);
+            return new DefaultMqttRoute(manufacturerCode, topic, replyTopic, upstream, downstream, downstreamForFunctionHandleResponse, qos, group, description, example);
         }
 
         public String toString() {
-            return "DefaultMqttRoute.DefaultMqttRouteBuilder(topic=" + this.topic + ", replyTopic=" + this.replyTopic +
+            return "DefaultMqttRoute.DefaultMqttRouteBuilder(manufacturerCode=" + this.manufacturerCode + ", topic=" + this.topic + ", replyTopic=" + this.replyTopic +
                     ", upstream=" + this.upstream + ", downstream=" + this.downstream +
                     ", downstreamForFunctionHandleResponse=" + this.downstreamForFunctionHandleResponse +
                     ", qos=" + this.qos + ", group=" + this.group +

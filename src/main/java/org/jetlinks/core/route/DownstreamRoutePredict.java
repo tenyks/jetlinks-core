@@ -1,6 +1,9 @@
 package org.jetlinks.core.route;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.jetlinks.core.message.DeviceMessage;
+
+import javax.annotation.Nonnull;
 
 /**
  * 消息路由判别器
@@ -12,6 +15,8 @@ import org.jetlinks.core.message.DeviceMessage;
  */
 public interface DownstreamRoutePredict<R extends Route, M extends DeviceMessage> {
 
-    boolean isAcceptable(R route, M message);
+    boolean isAcceptable(@Nonnull R route, @Nonnull M message, @Nonnull JsonNode encodedMsg);
+
+    boolean isAcceptable(@Nonnull R route, @Nonnull M message);
 
 }

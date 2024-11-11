@@ -1,5 +1,7 @@
 package org.jetlinks.core.route;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +21,12 @@ public class TemplateTopic implements Serializable {
     private final String    templateUri;
 
     /**
-     * 当pattern=0时，{manufacturerCode}/.../{productId}/.../{deviceId}/.../postfix
-     * 当pattern=1时，prefix/.../{manufacturerCode}/.../{productId}/.../{deviceId}/.../postfix
+     * 厂家编码
+     */
+    private final String        manufacturerCode;
+
+    /**
+     * 当pattern=1时，prefix/.../{manufacturerCode}/.../{productId}/.../{deviceId}/.../postfix或者{manufacturerCode}/.../{productId}/.../{deviceId}/.../postfix
      */
     private final int       pattern;
 
@@ -36,7 +42,12 @@ public class TemplateTopic implements Serializable {
      * @param pattern          参数相应属性的定义
      */
     public TemplateTopic(String templateUri, int pattern) {
+        this(templateUri, pattern, null);
+    }
+
+    public TemplateTopic(String templateUri, int pattern, @Nullable String manufacturerCode) {
         this.templateUri = templateUri;
+        this.manufacturerCode = manufacturerCode;
         this.pattern = pattern;
         this.templateParts = templateUri.split("/");
         this.placeHolderOffsets = new ArrayList<>();
@@ -50,7 +61,7 @@ public class TemplateTopic implements Serializable {
         }
     }
 
-    public String   concreteTopic(String manufacturerCode, String productId, String deviceId) {
+    public String   concreteTopic(@Nullable String manufacturerCode, String productId, String deviceId) {
         if (pattern != 1) return templateUri;
 
         String rst = templateUri;
@@ -66,6 +77,10 @@ public class TemplateTopic implements Serializable {
         }
 
         return rst;
+    }
+
+    public String   concreteTopic(String productId, String deviceId) {
+        return concreteTopic(this.manufacturerCode, productId, deviceId);
     }
 
     public TopicPathVariables parse(String topicUri) {

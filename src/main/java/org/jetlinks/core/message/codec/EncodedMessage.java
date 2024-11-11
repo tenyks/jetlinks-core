@@ -28,9 +28,9 @@ public interface EncodedMessage  {
      * @return ByteBuf
      */
     @Nonnull
-    ByteBuf getPayload();
+    ByteBuf             getPayload();
 
-    default String payloadAsString() {
+    default String      payloadAsString() {
         return getPayload().toString(StandardCharsets.UTF_8);
     }
 
