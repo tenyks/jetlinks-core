@@ -24,6 +24,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.ibm.jsonata4java</groupId>
+            <artifactId>JSONata4Java</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
         </dependency>
@@ -79,6 +84,16 @@
             <artifactId>leshan-server-cf</artifactId>
             <version>${leshan-server-cf.version}</version>
             <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.californium</groupId>
+                    <artifactId>scandium</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.californium</groupId>
+                    <artifactId>californium-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
